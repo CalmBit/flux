@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/ibxm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/jnlp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/eb547_000/fluxlibraries/NATIVES/WINDOWS"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/slick.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/tinylinepp.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
