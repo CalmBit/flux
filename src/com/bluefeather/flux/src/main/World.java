@@ -1,5 +1,7 @@
 package com.bluefeather.flux.src.main;
 
+import com.bluefeather.flux.src.entities.Entity;
+import com.bluefeather.flux.src.entities.EntityManager;
 import com.bluefeather.flux.src.tile.Tile;
 import com.bluefeather.flux.src.tile.TileDirt;
 import com.bluefeather.flux.src.tile.TileGrass;
@@ -7,10 +9,13 @@ import com.bluefeather.flux.src.tile.TileGrass;
 public class World {
 	
 	
+	private String name;
 	public Tile[][] tileMap = new Tile[100][100];
+	public EntityManager entityManager = new EntityManager();
 	public World(String worldname)
 	{
-		
+		this.name = worldname;
+		worldInit();
 	}
 	
 	public void worldInit()
@@ -30,7 +35,10 @@ public class World {
 				}
 				
 			}
+			System.out.println(i + " of 100");
 		}
+		System.out.println("World " + name + " generated.");
+		entityManager.registerEntity(new Entity("Entity", 1, 1));
 	}
 	
 	public void render()
@@ -42,7 +50,7 @@ public class World {
 	
 	public void update()
 	{
-		
+		entityManager.update();
 	}
 
 }

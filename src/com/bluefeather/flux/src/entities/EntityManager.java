@@ -17,6 +17,19 @@ public class EntityManager {
 		if(ent != null) {
 			ent.uID = uID;
 			uID++;
+			entities.add(ent);
+		}
+		System.out.println(ent.name + " was registered!");
+	}
+	
+	public void deregisterEntity(int uID)
+	{
+		for(Entity ent : entities)
+		{
+			if(ent.uID == uID)
+			{
+				entities.remove(ent);
+			}
 		}
 	}
 	

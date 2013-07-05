@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bluefeather.flux.src.entities.Entity;
+import com.bluefeather.flux.src.entities.components.message.Message;
 
 public class ComponentManager {
 	
@@ -40,9 +41,9 @@ public class ComponentManager {
 	{
 		for(Component c : components)
 		{
-			if(c.name != message.originatorName)
+			if(c.name == message.destinationName)
 			{
-			c.recieveMessage(message);
+				c.recieveMessage(message);
 			}
 		}
 	}

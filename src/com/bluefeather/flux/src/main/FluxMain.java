@@ -41,13 +41,14 @@ public class FluxMain {
 	
 	while(!Display.isCloseRequested()) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		world.update();
 		switch(gameState)
 		{
 			default:
 				break;
 		}
 		Display.update();
-		Display.sync(120);
+		Display.sync(60);
 	}
 	Display.destroy();
  }

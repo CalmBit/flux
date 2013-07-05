@@ -1,9 +1,11 @@
 package com.bluefeather.flux.src.entities.components;
 
+import com.bluefeather.flux.src.entities.components.message.Message;
+
 
 public abstract class Component {
 	
-	private ComponentManager holder;
+	protected ComponentManager holder;
 	public String name;
 	
 	public Component(ComponentManager holder, String name)
@@ -12,9 +14,15 @@ public abstract class Component {
 		this.name = name;
 	}
 	
-	public abstract void update();
+	public void update()
+	{
+		
+	}
 
-	public abstract void fireMessage();
+	public void fireMessage(Message message)
+	{
+		this.holder.disperseMessage(message);
+	}
 	
 	public abstract void recieveMessage(Message message);
 }
