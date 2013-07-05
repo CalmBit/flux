@@ -1,13 +1,12 @@
 package com.bluefeather.flux.src.entities;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class EntityManager {
 	
 	private static int uID = 1;
 	
-	public Map<Integer,Entity> entities = new HashMap<Integer,Entity>();
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
 	public EntityManager()
 	{
 		
@@ -18,6 +17,14 @@ public class EntityManager {
 		if(ent != null) {
 			ent.uID = uID;
 			uID++;
+		}
+	}
+	
+	public void update()
+	{
+		for(Entity en : entities)
+		{
+			en.update();
 		}
 	}
 	

@@ -25,6 +25,7 @@ public class FluxMain {
 	public World world = new World("World 1");
 	public int width = 800,height = 600;
 	
+	private EnumGameState gameState = EnumGameState.SPLASH;
 
  public void start() throws IOException {
 	try {
@@ -40,7 +41,11 @@ public class FluxMain {
 	
 	while(!Display.isCloseRequested()) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		//render, update
+		switch(gameState)
+		{
+			default:
+				break;
+		}
 		Display.update();
 		Display.sync(120);
 	}
