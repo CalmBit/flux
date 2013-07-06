@@ -11,6 +11,7 @@ public class World {
 	
 	private String name;
 	public Tile[][] tileMap = new Tile[100][100];
+	public static boolean[][] collisionMap = new boolean[100][100];
 	public EntityManager entityManager = new EntityManager();
 	public World(String worldname)
 	{
@@ -21,36 +22,44 @@ public class World {
 	public void worldInit()
 	{
 		//Begin generation
-		for(int i = 0; i < 100;i++)
+		for(int i = 0; i < FluxMain.width/50;i++)
 		{
-			for(int j = 0;j < 100;j++)
+			for(int j = 0;j < FluxMain.height/50;j++)
 			{
-				if(i == 50)
+				if(j == 8)
 				{
 					tileMap[i][j] = new TileGrass(i*50,j*50);
+					collisionMap[i][j] = true;
 				}
-				else if(i > 50)
+				else if(j > 8)
 				{
 					tileMap[i][j] = new TileDirt(i*50,j*50);
+					collisionMap[i][j] = true;
 				}
 				
 			}
-			System.out.println(i + " of 100");
+			System.out.println(i + " of " + FluxMain.width/50);
 		}
 		System.out.println("World " + name + " generated.");
 		entityManager.registerEntity(new Entity("Entity", 1, 1));
 	}
 	
-	public void render()
-	{
-		
-	}
 	
 	
 	
 	public void update()
 	{
 		entityManager.update();
+		for(int i = 0; i < FluxMain.width/50; i++)
+		{
+			for(int j = 0; j < FluxMain.height/50;j++)
+			{
+				if(tileMap[i][j] != null) {
+					System.out.println(i + "," + j);
+					tileMap[i][j].render();
+				}
+			}
+		}
 	}
 
 }

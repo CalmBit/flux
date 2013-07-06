@@ -4,6 +4,7 @@ import com.bluefeather.flux.src.entities.components.Component;
 import com.bluefeather.flux.src.entities.components.ComponentInput;
 import com.bluefeather.flux.src.entities.components.ComponentManager;
 import com.bluefeather.flux.src.entities.components.ComponentPosition;
+import com.bluefeather.flux.src.entities.components.ComponentRender;
 
 public class Entity {
 	
@@ -16,12 +17,14 @@ public class Entity {
 		this.name = name;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y));
 		componentManager.addComponent(new ComponentInput(componentManager));
+		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1));
 	}
 	
 	public void update()
 	{
 		componentManager.update();
 	}
+	
 	
 	public void registerComponent(Component component)
 	{

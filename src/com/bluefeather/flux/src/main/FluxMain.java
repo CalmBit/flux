@@ -17,15 +17,17 @@ import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 
 import java.io.IOException;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
 
 public class FluxMain {
 	public World world = new World("World 1");
-	public int width = 800,height = 600;
+	public static int width = 800,height = 600;
 	
-	private EnumGameState gameState = EnumGameState.SPLASH;
+	private EnumGameState gameState = EnumGameState.GAME;
 
  public void start() throws IOException {
 	try {
@@ -41,14 +43,16 @@ public class FluxMain {
 	
 	while(!Display.isCloseRequested()) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		world.update();
 		switch(gameState)
 		{
+			case GAME:
+				world.update();
+				break;
 			default:
 				break;
 		}
 		Display.update();
-		Display.sync(60);
+		Display.sync(120);
 	}
 	Display.destroy();
  }
