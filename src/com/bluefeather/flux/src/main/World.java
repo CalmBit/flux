@@ -55,7 +55,6 @@ public class World {
 			for(int j = 0; j < FluxMain.height/50;j++)
 			{
 				if(tileMap[i][j] != null) {
-					System.out.println(i + "," + j);
 					tileMap[i][j].render();
 				}
 			}
