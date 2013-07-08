@@ -15,7 +15,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class FluxMain {
 	public World world = new World("World 1");
 	public static int width = 800,height = 600;
-	
+	public static float br = 0.54f,bg = 0.98f,bb = 1f,ba = 1f;
 	private EnumGameState gameState = EnumGameState.GAME;
 	
 	public static Texture enttex;
@@ -35,7 +35,7 @@ public class FluxMain {
 	init();
 	
 	while(!Display.isCloseRequested()) {
-		glClearColor(0.54f,0.98f,1f,1f);
+		glClearColor(br,bg,bb,ba);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		switch(gameState)
 		{

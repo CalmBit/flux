@@ -3,6 +3,7 @@ package com.bluefeather.flux.src.entities.components;
 import static org.lwjgl.input.Keyboard.*;
 
 import com.bluefeather.flux.src.entities.components.message.Message;
+import com.bluefeather.flux.src.entities.components.message.MessageAscending;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.main.World;
@@ -23,6 +24,7 @@ public class ComponentInput extends Component {
 				if(isKeyDown(KEY_W))
 				{
 					y -= 5;
+					fireMessage(new MessageAscending(this.name, "Position"));
 				}
 				if(isKeyDown(KEY_S))
 				{
@@ -72,7 +74,6 @@ public class ComponentInput extends Component {
 			MessagePositionChange pmessage = (MessagePositionChange) message;
 			x = pmessage.nx;
 			y = pmessage.ny;
-			System.out.println(x + "," + y);
 		}
 
 	}

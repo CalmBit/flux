@@ -16,10 +16,10 @@ public class ComponentRender extends Component {
 	float x,y,sx,sy;
 	float r,g,b;
 	static Texture tex;
-	public ComponentRender(ComponentManager holder, float x, float y,float sx,float sy, float r, float g, float b, Texture tex) {
+	public ComponentRender(ComponentManager holder, float i_x, float i_y,float sx,float sy, float r, float g, float b, Texture tex) {
 		super(holder, "Render");
-		this.x = x;
-		this.y = y;
+		this.x = i_x;
+		this.y = i_y;
 		this.sx = sx;
 		this.sy = sy;
 		this.r = r;
