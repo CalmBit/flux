@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/slick.jar"/>
 	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/tinylinepp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eb547_000/fluxlibraries/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
