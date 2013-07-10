@@ -20,6 +20,8 @@ package com.bluefeather.flux.src.main;
  */
 import com.bluefeather.flux.src.entities.Entity;
 import com.bluefeather.flux.src.entities.EntityManager;
+import com.bluefeather.flux.src.entities.EntityMob;
+import com.bluefeather.flux.src.entities.EntityPlayer;
 import com.bluefeather.flux.src.tile.Tile;
 import com.bluefeather.flux.src.tile.TileDirt;
 import com.bluefeather.flux.src.tile.TileGrass;
@@ -59,7 +61,9 @@ public class World {
 			System.out.println(i + " of " + FluxMain.width/50);
 		}
 		System.out.println("World " + name + " generated.");
-		entityManager.registerEntity(new Entity("Entity", 1, 1));
+
+		entityManager.registerEntity(new EntityPlayer(1, 1, "CalmBit", FluxMain.enttex.getTextureID()));
+		entityManager.registerEntity(new EntityMob("Mob", 1,1,100, FluxMain.enttex2.getTextureID()));
 	}
 	
 	

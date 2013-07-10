@@ -33,8 +33,8 @@ public class ComponentRender extends Component {
 
 	float x,y,sx,sy;
 	float r,g,b;
-	static Texture tex;
-	public ComponentRender(ComponentManager holder, float i_x, float i_y,float sx,float sy, float r, float g, float b, Texture tex) {
+	int texID;
+	public ComponentRender(ComponentManager holder, float i_x, float i_y,float sx,float sy, float r, float g, float b, int texID) {
 		super(holder, "Render");
 		this.x = i_x;
 		this.y = i_y;
@@ -43,14 +43,14 @@ public class ComponentRender extends Component {
 		this.r = r;
 		this.g = g;
 		this.b = b;
-		this.tex = tex;
+		this.texID = texID;
 	}
 	
 	public void update()
 	{
 		fireMessage(new MessageRequestPosition(this.name,"Position"));
 		GL11.glColor3f(r, g, b);
-		glBindTexture(GL_TEXTURE_2D,FluxMain.enttex.getTextureID());
+		glBindTexture(GL_TEXTURE_2D, texID);
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0,0);
 		GL11.glVertex2f(x, y);

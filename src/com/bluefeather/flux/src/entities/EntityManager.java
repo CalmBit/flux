@@ -37,7 +37,7 @@ public class EntityManager {
 			uID++;
 			entities.add(ent);
 		}
-		System.out.println(ent.name + " was registered!");
+		System.out.println(ent.name + " was registered under ID" + ent.uID);
 	}
 	
 	public void deregisterEntity(int uID)

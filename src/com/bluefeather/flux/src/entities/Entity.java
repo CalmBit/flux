@@ -1,5 +1,7 @@
 package com.bluefeather.flux.src.entities;
 
+import org.newdawn.slick.opengl.Texture;
+
 import com.bluefeather.flux.src.entities.components.Component;
 import com.bluefeather.flux.src.entities.components.ComponentHealth;
 import com.bluefeather.flux.src.entities.components.ComponentInput;
@@ -31,14 +33,16 @@ public class Entity {
 	public String name;
 	protected int uID;
 	public ComponentManager componentManager = new ComponentManager(this);
-
-	public Entity(String name, float x, float y)
+	public int texID;
+	public Entity(String name, float x, float y, int i_health, int texID)
 	{
+		boolean hI = false;
+		this.texID = texID;
 		this.name = name;
-		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true));
-		componentManager.addComponent(new ComponentInput(componentManager));
-		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, FluxMain.enttex));
-		componentManager.addComponent(new ComponentHealth(componentManager, 100));
+		if(name == "Player") hI = true;
+		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
+		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
+		componentManager.addComponent(new ComponentHealth(componentManager, i_health));
 	}
 	
 	public void update()

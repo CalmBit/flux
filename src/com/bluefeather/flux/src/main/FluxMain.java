@@ -31,7 +31,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class FluxMain {
-	public World world = new World("World 1");
+	public World world;
 	public static int width = 800,height = 600;
 	public static float br = 0.54f,bg = 0.98f,bb = 1f,ba = 1f;
 	private EnumGameState gameState = EnumGameState.GAME;
@@ -39,6 +39,7 @@ public class FluxMain {
 	public static Texture enttex;
 	public static Texture dirttex;
 	public static Texture grasstex;
+	public static Texture enttex2;
 
  public void start() throws IOException {
 	try {
@@ -83,6 +84,7 @@ public class FluxMain {
 		return null;
 	}
  
+ 
  public void init() {
 	 
 	 glClearColor(0f,0f,0f,1f);
@@ -97,8 +99,11 @@ public class FluxMain {
 	 
 	 
 	 enttex = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguy.png"),"theguy.png");
+	 enttex2 = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguy2.png"),"theguy2.png");
 	 dirttex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/dirt.png"), "dirt.png");
 	 grasstex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/grass.png"), "grass.png");
+	 
+	 world = new World("World 1");
  }
  
  

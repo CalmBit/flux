@@ -29,12 +29,14 @@ public class ComponentPosition extends Component {
 	float velocity = 1;
 	boolean ascending = true;
 	boolean wasAsc = false;
+	boolean hasInput;
 	boolean living;
-	public ComponentPosition(ComponentManager holder, float i_x, float i_y, boolean i_living) {
+	public ComponentPosition(ComponentManager holder, float i_x, float i_y, boolean i_living, boolean hasInput) {
 		super(holder, "Position");
 		this.x = i_x;
 		this.y = i_y;
 		this.living = i_living;
+		this.hasInput = hasInput;
 		fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 	}
 
@@ -84,6 +86,18 @@ public class ComponentPosition extends Component {
 		
 
 	}
+	
+	public void fireMessage(Message message)
+	{
+		if(message.destinationName == "Input" && !hasInput)
+		{
+			
+		}
+		else
+		{
+			super.fireMessage(message);
+		}
+	}
 
 
 
@@ -94,11 +108,11 @@ public class ComponentPosition extends Component {
 			MessagePositionChange pmessage = (MessagePositionChange) message;
 			x = pmessage.nx;
 			y = pmessage.ny;
-			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
+			fireMessage(new MessagePositionChange(this.name,message.originatorName,x,y));
 		}
 		if(message.name == "RequestPosition")
 		{
-			fireMessage(new MessagePositionChange(this.name, "Render", x,y));
+			fireMessage(new MessagePositionChange(this.name, message.originatorName, x,y));
 		}
 		if(message.name == "Ascending")
 		{

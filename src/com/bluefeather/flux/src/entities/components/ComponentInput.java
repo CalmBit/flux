@@ -44,10 +44,6 @@ public class ComponentInput extends Component {
 					y -= 5;
 					fireMessage(new MessageAscending(this.name, "Position"));
 				}
-				if(isKeyDown(KEY_S))
-				{
-					y += 5;
-				}
 				if(isKeyDown(KEY_A))
 				{
 					x -= 5;
