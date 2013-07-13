@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities;
+package com.bluefeather.flux.src.entities.components.prefixes;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,48 +18,24 @@ package com.bluefeather.flux.src.entities;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.util.ArrayList;
+import com.bluefeather.flux.src.entities.components.ComponentManager;
+import com.bluefeather.flux.src.entities.components.ComponentPrefix;
+import com.bluefeather.flux.src.entities.components.message.MessageDamageChange;
 
-public class EntityManager {
-	
-	private static int uID = 1;
-	
-	public ArrayList<Entity> entities = new ArrayList<Entity>();
-	public EntityManager()
-	{
+public class PrefixTerrible extends Prefix {
+
+	public PrefixTerrible(ComponentManager manager) {
+		super(manager, "Terrible");
+
+	}
+
+	public void apply() {
+		manager.process.name += " the Terrible";
+		MessageDamageChange change = new MessageDamageChange("Prefix", "Damage", 5, true);
+		manager.disperseMessage(change);
+		
+		
 		
 	}
-	
-	public void registerEntity(Entity ent)
-	{
-		if(ent != null) {
-			ent.uID = uID;
-			uID++;
-			entities.add(ent);
-		}
-		System.out.println(ent.name + " was registered under uID " + ent.uID);
-	}
-	
-	public void deregisterEntity(int uID)
-	{
-		for(Entity ent : entities)
-		{
-			if(ent.uID == uID)
-			{
-				entities.remove(ent);
-			}
-		}
-	}
-	
-	public void update()
-	{
-		for(Entity en : entities)
-		{
-			en.update();
-		}
-	}
-	
-	
-	
 
 }

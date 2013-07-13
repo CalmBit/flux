@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities;
+package com.bluefeather.flux.src.entities.components.message;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,48 +18,15 @@ package com.bluefeather.flux.src.entities;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.util.ArrayList;
+public class MessageDamageChange extends Message {
 
-public class EntityManager {
-	
-	private static int uID = 1;
-	
-	public ArrayList<Entity> entities = new ArrayList<Entity>();
-	public EntityManager()
-	{
-		
+	public int newDamage;
+	public boolean positive;
+	public MessageDamageChange(String originatorName,
+			String destinationName, int newDamage, boolean positive) {
+		super("DamageChange", 6, originatorName, destinationName);
+		this.newDamage = newDamage;
+		this.positive = positive;
 	}
-	
-	public void registerEntity(Entity ent)
-	{
-		if(ent != null) {
-			ent.uID = uID;
-			uID++;
-			entities.add(ent);
-		}
-		System.out.println(ent.name + " was registered under uID " + ent.uID);
-	}
-	
-	public void deregisterEntity(int uID)
-	{
-		for(Entity ent : entities)
-		{
-			if(ent.uID == uID)
-			{
-				entities.remove(ent);
-			}
-		}
-	}
-	
-	public void update()
-	{
-		for(Entity en : entities)
-		{
-			en.update();
-		}
-	}
-	
-	
-	
 
 }

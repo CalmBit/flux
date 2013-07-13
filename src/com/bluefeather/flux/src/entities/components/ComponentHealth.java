@@ -49,7 +49,7 @@ public class ComponentHealth extends Component {
 			else
 			{
 				health -= hmessage.newHealth;
-				System.out.println(holder.process.name + ":Youch! " + health);
+				System.out.println(holder.process.name + ": Youch! " + health);
 			}
 		}
 	}

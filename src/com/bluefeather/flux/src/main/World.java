@@ -63,7 +63,7 @@ public class World {
 		System.out.println("World " + name + " generated.");
 
 		entityManager.registerEntity(new EntityPlayer(1, 1, "CalmBit", FluxMain.enttex.getTextureID()));
-		entityManager.registerEntity(new EntityMob("Mob", 1,1,100, FluxMain.enttex2.getTextureID()));
+		entityManager.registerEntity(new EntityMob("Mob", 1,1,100,2,FluxMain.enttex2.getTextureID()));
 	}
 	
 	

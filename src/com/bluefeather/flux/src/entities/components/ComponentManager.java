@@ -26,7 +26,7 @@ import com.bluefeather.flux.src.entities.components.message.Message;
 
 public class ComponentManager {
 	
-	protected Entity process;
+	public Entity process;
 	public List<Component> components = new ArrayList<Component>();
 	private boolean stop;
 	

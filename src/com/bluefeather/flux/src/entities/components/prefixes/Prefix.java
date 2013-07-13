@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities;
+package com.bluefeather.flux.src.entities.components.prefixes;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,47 +18,20 @@ package com.bluefeather.flux.src.entities;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.util.ArrayList;
+import com.bluefeather.flux.src.entities.components.ComponentManager;
 
-public class EntityManager {
+public abstract class Prefix {
 	
-	private static int uID = 1;
-	
-	public ArrayList<Entity> entities = new ArrayList<Entity>();
-	public EntityManager()
+	ComponentManager manager;
+	String name;
+	public Prefix(ComponentManager manager, String name)
 	{
-		
+		this.name = name;
+		this.manager = manager;
+		this.apply();
 	}
 	
-	public void registerEntity(Entity ent)
-	{
-		if(ent != null) {
-			ent.uID = uID;
-			uID++;
-			entities.add(ent);
-		}
-		System.out.println(ent.name + " was registered under uID " + ent.uID);
-	}
-	
-	public void deregisterEntity(int uID)
-	{
-		for(Entity ent : entities)
-		{
-			if(ent.uID == uID)
-			{
-				entities.remove(ent);
-			}
-		}
-	}
-	
-	public void update()
-	{
-		for(Entity en : entities)
-		{
-			en.update();
-		}
-	}
-	
+	public abstract void apply();
 	
 	
 
