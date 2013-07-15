@@ -19,7 +19,7 @@ package com.bluefeather.flux.src.entities.components.prefixes;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.bluefeather.flux.src.entities.components.ComponentManager;
-import com.bluefeather.flux.src.entities.components.ComponentPrefix;
+
 import com.bluefeather.flux.src.entities.components.message.MessageDamageChange;
 
 public class PrefixTerrible extends Prefix {
@@ -31,7 +31,7 @@ public class PrefixTerrible extends Prefix {
 
 	public void apply() {
 		manager.process.name += " the Terrible";
-		MessageDamageChange change = new MessageDamageChange("Prefix", "Damage", 5, true);
+		MessageDamageChange change = new MessageDamageChange("Prefix", "EntVal", 5, true);
 		manager.disperseMessage(change);
 		
 		

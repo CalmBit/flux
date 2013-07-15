@@ -20,14 +20,15 @@ package com.bluefeather.flux.src.entities;
  */
 import com.bluefeather.flux.src.entities.components.ComponentAITest;
 import com.bluefeather.flux.src.entities.components.ComponentPrefix;
-import com.bluefeather.flux.src.entities.components.prefixes.PrefixTerrible;
+import com.bluefeather.flux.src.entities.components.prefixes.PrefixGodly;
+
 
 public class EntityMob extends Entity {
 
 	public EntityMob(String name, float x, float y, int i_health, int i_damage, int texID) {
 		super(name, x, y, i_health, i_damage, texID);
 		componentManager.addComponent(new ComponentAITest(componentManager));
-		componentManager.addComponent(new ComponentPrefix(componentManager,new PrefixTerrible(componentManager)));
+		componentManager.addComponent(new ComponentPrefix(componentManager,new PrefixGodly(componentManager)));
 	}
 
 }

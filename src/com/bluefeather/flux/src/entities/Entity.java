@@ -18,16 +18,17 @@ package com.bluefeather.flux.src.entities;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.newdawn.slick.opengl.Texture;
+
 
 import com.bluefeather.flux.src.entities.components.Component;
-import com.bluefeather.flux.src.entities.components.ComponentDamage;
-import com.bluefeather.flux.src.entities.components.ComponentHealth;
-import com.bluefeather.flux.src.entities.components.ComponentInput;
+
+import com.bluefeather.flux.src.entities.components.ComponentEntValues;
+
+
 import com.bluefeather.flux.src.entities.components.ComponentManager;
 import com.bluefeather.flux.src.entities.components.ComponentPosition;
 import com.bluefeather.flux.src.entities.components.ComponentRender;
-import com.bluefeather.flux.src.main.FluxMain;
+
 
 public class Entity {
 	public String name;
@@ -42,8 +43,7 @@ public class Entity {
 		if(name == "Player") hI = true;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
 		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
-		componentManager.addComponent(new ComponentHealth(componentManager, i_health));
-		componentManager.addComponent(new ComponentDamage(componentManager, i_damage));
+		componentManager.addComponent(new ComponentEntValues(componentManager, i_health, i_damage));
 	}
 	
 	public void update()

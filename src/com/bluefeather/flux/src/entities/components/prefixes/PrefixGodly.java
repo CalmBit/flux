@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities.components;
+package com.bluefeather.flux.src.entities.components.prefixes;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,28 +18,21 @@ package com.bluefeather.flux.src.entities.components;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.bluefeather.flux.src.entities.components.message.Message;
-import com.bluefeather.flux.src.entities.components.message.MessageDamageChange;
+import com.bluefeather.flux.src.entities.components.ComponentManager;
+import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
 
+public class PrefixGodly extends Prefix {
 
-public class ComponentDamage extends Component {
-
-	int damage;
-	public ComponentDamage(ComponentManager holder, int i_damage) {
-		super(holder, "Damage");
-		this.damage = i_damage;
+	public PrefixGodly(ComponentManager manager) {
+		super(manager, "Godly");
+	
 	}
 
-	public void recieveMessage(Message message) {
-		
-		if(message.name == "DamageChange")
-		{
-			MessageDamageChange hmessage = (MessageDamageChange)message;
-			if(hmessage.positive)
-			damage += hmessage.newDamage;
-			else damage -= hmessage.newDamage;
-			System.out.println(holder.process.name + ": Damage changed to " + damage);
-		}
+
+	public void apply() {
+		manager.process.name = "Godly " + manager.process.name;
+		MessageHealthChange change = new MessageHealthChange("Prefix","EntVal", 2, true , true);
+		manager.disperseMessage(change);
 	}
 
 }

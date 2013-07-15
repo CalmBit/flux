@@ -18,7 +18,7 @@ package com.bluefeather.flux.src.main;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.bluefeather.flux.src.entities.Entity;
+
 import com.bluefeather.flux.src.entities.EntityManager;
 import com.bluefeather.flux.src.entities.EntityMob;
 import com.bluefeather.flux.src.entities.EntityPlayer;

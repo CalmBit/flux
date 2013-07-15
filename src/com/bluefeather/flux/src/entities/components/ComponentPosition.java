@@ -47,7 +47,7 @@ public class ComponentPosition extends Component {
 		
 		if(World.collisionMap[(int)x/50][(int)(y+50)/50])
 		{
-			y = (int)y-1;
+			y = (int)y;
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
 		}
@@ -68,14 +68,14 @@ public class ComponentPosition extends Component {
 			{
 				if(ascending) {
 				if((velocity - 5) > 7){
-					fireMessage(new MessageHealthChange(this.name,"Health", (int)velocity, false));
+					fireMessage(new MessageHealthChange(this.name,"EntVal", (int)velocity, false, false));
 					}
 				
 				}
 				else
 				{
 					if((velocity) > 7){
-						fireMessage(new MessageHealthChange(this.name,"Health",(int)velocity , false));
+						fireMessage(new MessageHealthChange(this.name,"EntVal",(int)velocity , false, false));
 						}
 				}
 				velocity = 1;

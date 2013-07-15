@@ -22,11 +22,13 @@ public class MessageHealthChange extends Message {
 
 	public int newHealth;
 	public boolean positive;
+	public boolean mult;
 	public MessageHealthChange(String originatorName,
-			String destinationName, int newHealth, boolean pos) {
+			String destinationName, int newHealth, boolean pos, boolean mult) {
 		super("HealthChange", 4, originatorName, destinationName);
 		this.newHealth = newHealth;
 		this.positive = pos;
+		this.mult = mult;
 	}
 
 }

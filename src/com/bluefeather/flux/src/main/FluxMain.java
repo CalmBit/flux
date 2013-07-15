@@ -19,7 +19,7 @@ package com.bluefeather.flux.src.main;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL14.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 

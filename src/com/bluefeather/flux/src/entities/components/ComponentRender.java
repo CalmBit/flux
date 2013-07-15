@@ -22,12 +22,11 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBindTexture;
 
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.opengl.Texture;
+
 
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.entities.components.message.MessageRequestPosition;
-import com.bluefeather.flux.src.main.FluxMain;
 
 public class ComponentRender extends Component {
 

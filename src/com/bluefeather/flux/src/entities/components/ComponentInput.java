@@ -24,7 +24,7 @@ import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageAscending;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.FluxMain;
-import com.bluefeather.flux.src.main.World;
+
 
 public class ComponentInput extends Component {
 
