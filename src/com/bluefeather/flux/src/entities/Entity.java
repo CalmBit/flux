@@ -21,29 +21,33 @@ package com.bluefeather.flux.src.entities;
 
 
 import com.bluefeather.flux.src.entities.components.Component;
-
 import com.bluefeather.flux.src.entities.components.ComponentEntValues;
 
 
 import com.bluefeather.flux.src.entities.components.ComponentManager;
 import com.bluefeather.flux.src.entities.components.ComponentPosition;
 import com.bluefeather.flux.src.entities.components.ComponentRender;
+import com.bluefeather.flux.src.main.World;
+import com.bluefeather.flux.src.particles.Particle;
 
 
 public class Entity {
 	public String name;
 	protected int uID;
+	public World world;
 	public ComponentManager componentManager = new ComponentManager(this);
 	public int texID;
-	public Entity(String name, float x, float y, int i_health, int i_damage, int texID)
+	public Entity(String name, World world, float x, float y, int i_health, int i_damage, int texID)
 	{
 		boolean hI = false;
 		this.texID = texID;
 		this.name = name;
+		this.world = world;
 		if(name == "Player") hI = true;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
 		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
 		componentManager.addComponent(new ComponentEntValues(componentManager, i_health, i_damage));
+		
 	}
 	
 	public void update()
@@ -54,6 +58,11 @@ public class Entity {
 	
 	public void registerComponent(Component component)
 	{
+		
+	}
+
+	public void died() {
+		
 		
 	}
 }

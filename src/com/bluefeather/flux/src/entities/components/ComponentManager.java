@@ -23,6 +23,8 @@ import java.util.List;
 
 import com.bluefeather.flux.src.entities.Entity;
 import com.bluefeather.flux.src.entities.components.message.Message;
+import com.bluefeather.flux.src.entities.components.message.MessageDeath;
+import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentManager {
 	
@@ -66,6 +68,7 @@ public class ComponentManager {
 			found = true;
 			if(message.name == "Death")
 			{
+				disperseMessage(new MessageDeath("Manager", "Render"));
 				stop = true;
 				System.out.println(process.name + " Died...");
 			}

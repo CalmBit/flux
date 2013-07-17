@@ -1,4 +1,6 @@
 package com.bluefeather.flux.src.entities.components;
+import java.util.Random;
+
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -25,6 +27,8 @@ public abstract class Component {
 	
 	protected ComponentManager holder;
 	public String name;
+	
+	public Random rand = new Random();
 	
 	public Component(ComponentManager holder, String name)
 	{

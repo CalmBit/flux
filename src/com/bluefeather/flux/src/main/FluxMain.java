@@ -40,7 +40,7 @@ public class FluxMain {
 	public static Texture dirttex;
 	public static Texture grasstex;
 	public static Texture enttex2;
-
+	public static Texture bloodparticle;
  public void start() throws IOException {
 	try {
 		Display.setDisplayMode(new DisplayMode(width, height));
@@ -102,7 +102,7 @@ public class FluxMain {
 	 enttex2 = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguy2.png"),"theguy2.png");
 	 dirttex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/dirt.png"), "dirt.png");
 	 grasstex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/grass.png"), "grass.png");
-	 
+	 bloodparticle = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/blood.png"), "blood.png");
 	 world = new World("World 1");
  }
  

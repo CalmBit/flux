@@ -24,9 +24,13 @@ import static org.lwjgl.opengl.GL11.glBindTexture;
 import org.lwjgl.opengl.GL11;
 
 
+
+
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.entities.components.message.MessageRequestPosition;
+import com.bluefeather.flux.src.main.FluxMain;
+import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentRender extends Component {
 
@@ -68,6 +72,17 @@ public class ComponentRender extends Component {
 			MessagePositionChange pmessage = (MessagePositionChange)message;
 			x = pmessage.nx;
 			y = pmessage.ny;
+		}
+		
+		if(message.name == "Death")
+		{
+			for(int i = 0;i < 20;i++)
+			{
+				Particle p = new Particle(x+25, y, 100,2);
+				p.velocity = -3;
+				p.tex = FluxMain.bloodparticle.getTextureID();
+				holder.process.world.particleManager.addParticle(p);
+			}
 		}
 
 	}

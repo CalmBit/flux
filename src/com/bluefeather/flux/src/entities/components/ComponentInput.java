@@ -20,15 +20,20 @@ package com.bluefeather.flux.src.entities.components;
  */
 import static org.lwjgl.input.Keyboard.*;
 
+import java.util.Random;
+
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageAscending;
+import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.FluxMain;
+import com.bluefeather.flux.src.particles.Particle;
 
 
 public class ComponentInput extends Component {
 
 	public float x,y;
+	public Random baseRand = new Random();
 	public ComponentInput(ComponentManager holder) {
 		super(holder, "Input");
 		
@@ -38,7 +43,7 @@ public class ComponentInput extends Component {
 	public void update() {
 		super.update();
 		if(x >= 0 && x + 50 <= FluxMain.width && y >= 0 && y + 50 <= FluxMain.height) {
-			if(isKeyDown(KEY_W) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) ) {
+			if(isKeyDown(KEY_W) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) || isKeyDown(KEY_F)  || isKeyDown(KEY_K)) {
 				if(isKeyDown(KEY_W))
 				{
 					y -= 5;
@@ -51,6 +56,16 @@ public class ComponentInput extends Component {
 				if(isKeyDown(KEY_D))
 				{
 					x += 5;
+				}
+				if(isKeyDown(KEY_K))
+				{
+					fireMessage(new MessageHealthChange(this.name, "EntVal", 1000, false, false));
+				}
+				if(isKeyDown(KEY_F))
+				{
+					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,2);
+					p.velocity = -5;
+					holder.process.world.particleManager.addParticle(p);
 				}
 				fireMessage(new MessagePositionChange(name, "Position", x, y));
 			}
