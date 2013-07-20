@@ -26,10 +26,12 @@ import org.lwjgl.opengl.GL11;
 
 
 
+
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.entities.components.message.MessageRequestPosition;
 import com.bluefeather.flux.src.main.FluxMain;
+import com.bluefeather.flux.src.main.World;
 import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentRender extends Component {
@@ -64,6 +66,7 @@ public class ComponentRender extends Component {
 		GL11.glTexCoord2f(0,1);
 		GL11.glVertex2f(x, y + sy);
 		GL11.glEnd();
+
 	}
 
 	public void recieveMessage(Message message) {

@@ -24,6 +24,7 @@ import java.util.Random;
 
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageAscending;
+import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.FluxMain;
@@ -43,19 +44,21 @@ public class ComponentInput extends Component {
 	public void update() {
 		super.update();
 		if(x >= 0 && x + 50 <= FluxMain.width && y >= 0 && y + 50 <= FluxMain.height) {
-			if(isKeyDown(KEY_W) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) || isKeyDown(KEY_F)  || isKeyDown(KEY_K)) {
-				if(isKeyDown(KEY_W))
+			if(isKeyDown(KEY_SPACE) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) || isKeyDown(KEY_F)  || isKeyDown(KEY_K)) {
+				if(isKeyDown(KEY_SPACE))
 				{
 					y -= 5;
 					fireMessage(new MessageAscending(this.name, "Position"));
 				}
 				if(isKeyDown(KEY_A))
 				{
-					x -= 5;
+					//x -= 5;
+					fireMessage(new MessageChangeXVelocity(this.name,"Position",-5));
 				}
 				if(isKeyDown(KEY_D))
 				{
-					x += 5;
+					//x += 5;
+					fireMessage(new MessageChangeXVelocity(this.name,"Position",5));
 				}
 				if(isKeyDown(KEY_K))
 				{

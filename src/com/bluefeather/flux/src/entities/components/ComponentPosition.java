@@ -19,6 +19,7 @@ package com.bluefeather.flux.src.entities.components;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.bluefeather.flux.src.entities.components.message.Message;
+import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.World;
@@ -27,10 +28,13 @@ public class ComponentPosition extends Component {
 
 	float x,y;
 	float velocity = 1;
+	float xvelocity = 0;
 	boolean ascending = true;
 	boolean wasAsc = false;
+	boolean strafing = false;
 	boolean hasInput;
 	boolean living;
+	int steps;
 	public ComponentPosition(ComponentManager holder, float i_x, float i_y, boolean i_living, boolean hasInput) {
 		super(holder, "Position");
 		this.x = i_x;
@@ -44,17 +48,11 @@ public class ComponentPosition extends Component {
 		super.update();
 		
 		if(ascending) wasAsc = true;
-		
-		if(World.collisionMap[(int)x/50][(int)(y+50)/50])
-		{
-			y = (int)y;
-			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
-			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
-		}
+		x += xvelocity;
 		if(!World.collisionMap[(int)x/50][(int)((y+50)/50)])
 		{
 			if(wasAsc && !ascending) velocity = 1;
-			y = y + velocity;
+			y += velocity;
 			velocity += 0.1;
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
@@ -63,6 +61,18 @@ public class ComponentPosition extends Component {
 		else
 		{
 			y = (int)y;
+			x = (int)x;
+			if(World.collisionMap[(int)(x+50)/50][(int)((y)/50)])
+			{
+				if(xvelocity > 0)
+				{
+				
+				x = World.posMap[(int)(x+50)/50][(int)((y)/50)].x - 50;
+				xvelocity = -xvelocity/2;
+				}
+			}
+			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
+			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
 			//make sure the bloody thing is living before executing a command that isn't there
 			if(living)
 			{
@@ -81,8 +91,33 @@ public class ComponentPosition extends Component {
 				velocity = 1;
 			}
 		}
+		if(!strafing)
+		{
+			if(xvelocity != 0)
+			{
+				if(xvelocity < 0)
+				{
+					xvelocity += 0.1;
+					steps++;
+				}
+				if(xvelocity > 0)
+				{
+					xvelocity -= 0.1;
+					steps++;
+				}
+				
+				if(xvelocity <= 0.001 && xvelocity >= -0.001)
+				{
+					xvelocity = 0;
+					System.out.println("Steps: " + steps);
+					steps = 0;
+				}
+				System.out.println(xvelocity);
+			}
+		}
 		if(!ascending) wasAsc = false;
 		ascending = false;
+		if(strafing) strafing = false;
 		
 
 	}
@@ -117,6 +152,12 @@ public class ComponentPosition extends Component {
 		if(message.name == "Ascending")
 		{
 			ascending = true;
+		}
+		if(message.name == "ChangeXVelocity")
+		{
+			MessageChangeXVelocity vmessage = (MessageChangeXVelocity)message;
+			xvelocity = vmessage.newVelocity;
+			strafing = true;
 		}
 
 	}

@@ -23,6 +23,8 @@ package com.bluefeather.flux.src.main;
 
 import java.util.Random;
 
+import org.lwjgl.util.vector.Vector2f;
+
 import com.bluefeather.flux.src.entities.EntityManager;
 import com.bluefeather.flux.src.entities.EntityMob;
 import com.bluefeather.flux.src.entities.EntityPlayer;
@@ -38,6 +40,7 @@ public class World {
 	private String name;
 	public Tile[][] tileMap = new Tile[100][100];
 	public static boolean[][] collisionMap = new boolean[100][100];
+	public static Vector2f[][] posMap = new Vector2f[100][100];
 	public EntityManager entityManager = new EntityManager();
 	public ParticleManager particleManager = new ParticleManager(1000);
 	public Random basRand = new Random();
@@ -55,15 +58,23 @@ public class World {
 		{
 			for(int j = 0;j < FluxMain.height/50;j++)
 			{
+				if(i == 8)
+				{
+					tileMap[i][j] = new TileDirt(i*50,j*50);
+					collisionMap[i][j] = true;
+					posMap[i][j] = new Vector2f(i*50,j*50);
+				}
 				if(j == 8)
 				{
 					tileMap[i][j] = new TileGrass(i*50,j*50);
 					collisionMap[i][j] = true;
+					posMap[i][j] = new Vector2f(i*50,j*50);
 				}
 				else if(j > 8)
 				{
 					tileMap[i][j] = new TileDirt(i*50,j*50);
 					collisionMap[i][j] = true;
+					posMap[i][j] = new Vector2f(i*50,j*50);
 				}
 				
 			}
@@ -72,7 +83,7 @@ public class World {
 		System.out.println("World " + name + " generated.");
 
 		entityManager.registerEntity(new EntityPlayer(this, 1, 1, "CalmBit", FluxMain.enttex.getTextureID()));
-		entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
+		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
 		for(int i = 0;i < 101; i++) {
 		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5));
 		}
