@@ -14,7 +14,8 @@ public class Particle {
 	public int lifetime;
 	public int tex;
 	public int xvs;
-	public Particle(float i_x, float i_y, int time, int xvs)
+	public boolean floatp;
+	public Particle(float i_x, float i_y, int time, int xvs, boolean floatp)
 	{
 		this.x= i_x;
 		this.y = i_y;
@@ -23,6 +24,7 @@ public class Particle {
 		this.sy = 8;
 		this.lifetime = time;
 		this.xvs = xvs;
+		this.floatp = floatp;
 		if(rand.nextBoolean()) {
 		this.xvelocity = rand.nextFloat()*xvs;
 		}

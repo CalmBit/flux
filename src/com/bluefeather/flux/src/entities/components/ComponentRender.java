@@ -66,6 +66,7 @@ public class ComponentRender extends Component {
 		GL11.glTexCoord2f(0,1);
 		GL11.glVertex2f(x, y + sy);
 		GL11.glEnd();
+		
 
 	}
 
@@ -81,7 +82,7 @@ public class ComponentRender extends Component {
 		{
 			for(int i = 0;i < 20;i++)
 			{
-				Particle p = new Particle(x+25, y, 100,2);
+				Particle p = new Particle(x+25, y, 100,2,false);
 				p.velocity = -3;
 				p.tex = FluxMain.bloodparticle.getTextureID();
 				holder.process.world.particleManager.addParticle(p);

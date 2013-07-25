@@ -53,12 +53,12 @@ public class ComponentInput extends Component {
 				if(isKeyDown(KEY_A))
 				{
 					//x -= 5;
-					fireMessage(new MessageChangeXVelocity(this.name,"Position",-5));
+					fireMessage(new MessageChangeXVelocity(this.name,"Position",-1));
 				}
 				if(isKeyDown(KEY_D))
 				{
 					//x += 5;
-					fireMessage(new MessageChangeXVelocity(this.name,"Position",5));
+					fireMessage(new MessageChangeXVelocity(this.name,"Position",1));
 				}
 				if(isKeyDown(KEY_K))
 				{
@@ -66,7 +66,7 @@ public class ComponentInput extends Component {
 				}
 				if(isKeyDown(KEY_F))
 				{
-					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,2);
+					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,2,true);
 					p.velocity = -5;
 					holder.process.world.particleManager.addParticle(p);
 				}

@@ -49,7 +49,7 @@ public class ComponentPosition extends Component {
 		
 		if(ascending) wasAsc = true;
 		x += xvelocity;
-		if(!World.collisionMap[(int)x/50][(int)((y+50)/50)])
+		if(!World.collisionMap[(int)(x+.50)/50][(int)((y+50)/50)])
 		{
 			if(wasAsc && !ascending) velocity = 1;
 			y += velocity;
@@ -62,12 +62,12 @@ public class ComponentPosition extends Component {
 		{
 			y = (int)y;
 			x = (int)x;
-			if(World.collisionMap[(int)(x+50)/50][(int)((y)/50)])
+			if(World.collisionMap[(int)((x+.50)+50)/50][(int)((y)/50)])
 			{
 				if(xvelocity > 0)
 				{
 				
-				x = World.posMap[(int)(x+50)/50][(int)((y)/50)].x - 50;
+				x = World.posMap[(int)((x+.50)+50)/50][(int)((y)/50)].x - 50;
 				xvelocity = -xvelocity/2;
 				}
 			}

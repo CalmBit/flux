@@ -50,7 +50,10 @@ public class ParticleManager {
 				{
 					p.y += p.velocity;
 					p.x += p.xvelocity;
+					if(!p.floatp) {
 					p.velocity += 0.1;
+					}
+					else p.velocity -= 0.01;
 					if(p.xvelocity > 0) {
 					p.xvelocity -= 0.01;
 					}
@@ -60,17 +63,18 @@ public class ParticleManager {
 					}
 				}
 			}
-			else if(p.y <= 0)
+			if(p.y <= 0)
 			{
-				p.y = (int)p.y + 1;
+				p.y = (int)p.y + 100;
 				p.velocity = 0;
+				debris.add(p);
 			}
-			else if(p.x <= 0)
+			if(p.x <= 0)
 			{
 				p.x = (int)p.x + 1;
 				p.xvelocity = 0;
 			}
-			else if(p.x + 8 >= FluxMain.width)
+			if(p.x + p.sx >= FluxMain.width)
 			{
 				p.x  = (int)FluxMain.width - 9;
 				p.xvelocity = 0;
@@ -85,7 +89,7 @@ public class ParticleManager {
 	
 	public void destroyParticle(Particle p)
 	{
-		if(particles.contains(p) && debris.contains(p) && p.lifetime <= 0)
+		if(particles.contains(p) && debris.contains(p))
 		{
 			particles.remove(p);
 			numOfParticles--;

@@ -58,7 +58,7 @@ public class World {
 		{
 			for(int j = 0;j < FluxMain.height/50;j++)
 			{
-				if(i == 8)
+				if(i == 8 && j == 7)
 				{
 					tileMap[i][j] = new TileDirt(i*50,j*50);
 					collisionMap[i][j] = true;
@@ -85,7 +85,7 @@ public class World {
 		entityManager.registerEntity(new EntityPlayer(this, 1, 1, "CalmBit", FluxMain.enttex.getTextureID()));
 		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
 		for(int i = 0;i < 101; i++) {
-		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5));
+		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
 		}
 	}
 	
