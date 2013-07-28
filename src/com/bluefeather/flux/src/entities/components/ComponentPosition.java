@@ -49,7 +49,7 @@ public class ComponentPosition extends Component {
 		
 		if(ascending) wasAsc = true;
 		x += xvelocity;
-		if(!World.collisionMap[(int)(x+.50)/50][(int)((y+50)/50)])
+		if(!World.collisionMap[(int)(x+.50)/50][(int)((y+50)/50)] && !World.collisionMap[(int)(x+50)/50][(int)((y+50)/50)])
 		{
 			if(wasAsc && !ascending) velocity = 1;
 			y += velocity;
@@ -62,13 +62,22 @@ public class ComponentPosition extends Component {
 		{
 			y = (int)y;
 			x = (int)x;
+			//collide left block
 			if(World.collisionMap[(int)((x+.50)+50)/50][(int)((y)/50)])
 			{
 				if(xvelocity > 0)
 				{
 				
 				x = World.posMap[(int)((x+.50)+50)/50][(int)((y)/50)].x - 50;
-				xvelocity = -xvelocity/2;
+				
+				}
+			}
+			//collide right block
+			if(World.collisionMap[(int)((x+.50))/50][(int)((y)/50)])
+			{
+				if(xvelocity < 0)
+				{
+					x = World.posMap[(int)((x+.50))/50][(int)((y)/50)].x + 50;
 				}
 			}
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
@@ -95,18 +104,18 @@ public class ComponentPosition extends Component {
 		{
 			if(xvelocity != 0)
 			{
-				if(xvelocity < 0)
-				{
-					xvelocity += 0.1;
-					steps++;
-				}
 				if(xvelocity > 0)
 				{
 					xvelocity -= 0.1;
 					steps++;
 				}
+				if(xvelocity < 0)
+				{
+					xvelocity += 0.1;
+					steps++;
+				}
 				
-				if(xvelocity <= 0.001 && xvelocity >= -0.001)
+				if(xvelocity <= 0.01 && xvelocity >= -0.01)
 				{
 					xvelocity = 0;
 					System.out.println("Steps: " + steps);

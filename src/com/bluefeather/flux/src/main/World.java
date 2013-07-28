@@ -32,6 +32,7 @@ import com.bluefeather.flux.src.particles.Particle;
 import com.bluefeather.flux.src.particles.ParticleManager;
 import com.bluefeather.flux.src.tile.Tile;
 import com.bluefeather.flux.src.tile.TileDirt;
+import com.bluefeather.flux.src.tile.TileGooBlaster;
 import com.bluefeather.flux.src.tile.TileGrass;
 
 public class World {
@@ -60,7 +61,7 @@ public class World {
 			{
 				if(i == 8 && j == 7)
 				{
-					tileMap[i][j] = new TileDirt(i*50,j*50);
+					tileMap[i][j] = new TileGooBlaster(i*50,j*50, this);
 					collisionMap[i][j] = true;
 					posMap[i][j] = new Vector2f(i*50,j*50);
 				}
@@ -103,6 +104,7 @@ public class World {
 			{
 				if(tileMap[i][j] != null) {
 					tileMap[i][j].render();
+					tileMap[i][j].update();
 				}
 			}
 		}
