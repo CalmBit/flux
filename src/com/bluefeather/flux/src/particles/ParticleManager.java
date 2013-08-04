@@ -100,7 +100,7 @@ public class ParticleManager {
 		for(Particle p : particles) {
 			if(p.tex == 0)
 			{
-				p.tex = FluxMain.grasstex.getTextureID();
+				p.tex = FluxMain.gooparticle.getTextureID();
 			}
 			GL11.glPushMatrix();
 			GL11.glTranslatef(p.x + (p.sx/2), p.y + (p.sy/2), 0);
@@ -109,9 +109,13 @@ public class ParticleManager {
 			GL11.glTranslatef(-(p.x + (p.sx/2)),-(p.y + (p.sy/2)), 0);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, p.tex);
 			GL11.glBegin(GL11.GL_QUADS);
+			GL11.glTexCoord2f(0, 0);
 			GL11.glVertex2f(p.x, p.y);
+			GL11.glTexCoord2f(1, 0);
 			GL11.glVertex2f(p.x + p.sx, p.y);
+			GL11.glTexCoord2f(1, 1);
 			GL11.glVertex2f(p.x + p.sx, p.y + p.sy);
+			GL11.glTexCoord2f(0, 1);
 			GL11.glVertex2f(p.x, p.y  + p.sy);
 			GL11.glEnd();
 			GL11.glPopMatrix();

@@ -34,7 +34,6 @@ public class ComponentPosition extends Component {
 	boolean strafing = false;
 	boolean hasInput;
 	boolean living;
-	int steps;
 	public ComponentPosition(ComponentManager holder, float i_x, float i_y, boolean i_living, boolean hasInput) {
 		super(holder, "Position");
 		this.x = i_x;
@@ -80,6 +79,8 @@ public class ComponentPosition extends Component {
 					x = World.posMap[(int)((x+.50))/50][(int)((y)/50)].x + 50;
 				}
 			}
+			
+			//update the other components accordingly
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
 			//make sure the bloody thing is living before executing a command that isn't there
@@ -107,21 +108,20 @@ public class ComponentPosition extends Component {
 				if(xvelocity > 0)
 				{
 					xvelocity -= 0.1;
-					steps++;
+					
 				}
 				if(xvelocity < 0)
 				{
 					xvelocity += 0.1;
-					steps++;
+					
 				}
 				
 				if(xvelocity <= 0.01 && xvelocity >= -0.01)
 				{
 					xvelocity = 0;
-					System.out.println("Steps: " + steps);
-					steps = 0;
+					
 				}
-				System.out.println(xvelocity);
+				
 			}
 		}
 		if(!ascending) wasAsc = false;

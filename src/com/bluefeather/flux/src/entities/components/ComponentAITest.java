@@ -19,6 +19,7 @@ package com.bluefeather.flux.src.entities.components;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.bluefeather.flux.src.entities.components.message.Message;
+import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.entities.components.message.MessageRequestPosition;
 import com.bluefeather.flux.src.main.FluxMain;
@@ -44,9 +45,9 @@ public class ComponentAITest extends Component {
 			reverse = false;
 		}
 		if(!reverse)
-		fireMessage(new MessagePositionChange(this.name,"Position",x + 1, y));
+		fireMessage(new MessageChangeXVelocity(this.name, "Position", 1));
 		else
-		fireMessage(new MessagePositionChange(this.name,"Position",x - 1, y));
+			fireMessage(new MessageChangeXVelocity(this.name, "Position", -1));
 			
 	}
 

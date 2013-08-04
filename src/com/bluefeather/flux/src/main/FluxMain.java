@@ -20,12 +20,17 @@ package com.bluefeather.flux.src.main;
  */
 import static org.lwjgl.opengl.GL11.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+
+import javax.imageio.ImageIO;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -34,6 +39,7 @@ public class FluxMain {
 	public World world;
 	public static int width = 800,height = 600;
 	public static float br = 0.54f,bg = 0.98f,bb = 1f,ba = 1f;
+	public static int fpscap = 120;
 	private EnumGameState gameState = EnumGameState.GAME;
 	
 	public static Texture enttex;
@@ -41,11 +47,17 @@ public class FluxMain {
 	public static Texture grasstex;
 	public static Texture enttex2;
 	public static Texture bloodparticle;
+	public static Texture gooparticle;
 	public static Texture gooblasttex;
+	public static Texture smokeparticle;
+	public static Texture splash;
+	public static Texture sky;
  public void start() throws IOException {
 	try {
 		Display.setDisplayMode(new DisplayMode(width, height));
 		Display.create();
+		Display.setTitle("Flüx Engine V.0.0.1");
+		
 	} 
 	catch(LWJGLException e) {
 		e.printStackTrace();
@@ -59,6 +71,9 @@ public class FluxMain {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		switch(gameState)
 		{
+			case SPLASH:
+				displaySplash();
+				break;
 			case GAME:
 				world.update();
 				break;
@@ -66,17 +81,33 @@ public class FluxMain {
 				break;
 		}
 		Display.update();
-		Display.sync(120);
+		Display.sync(fpscap);
 	}
 	Display.destroy();
  }
 
+ public void displaySplash()
+ {
+	
+	 splash.bind();
+	 glBegin(GL_QUADS);
+	 glTexCoord2f(0,0);
+	 glVertex2f(0,0);
+	 glTexCoord2f(1,0);
+	 glVertex2f(width,0);
+	 glTexCoord2f(1,1);
+	 glVertex2f(width,height);
+	 glTexCoord2f(0,1);
+	 glVertex2f(0,height);
+	 glEnd();
+ }
  
  public Texture addTexture(String format, InputStream stream, String path)
 	{
 		try {
 		System.out.println("File " + path + " was loaded.");
 		return TextureLoader.getTexture(format,stream);
+		
 		}
 		catch(IOException e)
 		{
@@ -95,16 +126,20 @@ public class FluxMain {
 	 glMatrixMode(GL_MODELVIEW);
 	 glEnable(GL_TEXTURE_2D); 
 	 glEnable(GL_BLEND);
-	 glBlendFunc(GL_ONE,GL_ZERO);
-	 //GL14.glBlendEquation(mode);
+	 glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	 
 	 
-	 enttex = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguy.png"),"theguy.png");
-	 enttex2 = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguy2.png"),"theguy2.png");
+	 
+	 enttex = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguytrans.png"),"theguytrans.png");
+	 enttex2 = addTexture("PNG",ResourceLoader.getResourceAsStream("res/theguytrans2.png"),"theguytrans2.png");
 	 dirttex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/dirt.png"), "dirt.png");
 	 grasstex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/grass.png"), "grass.png");
 	 bloodparticle = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/blood.png"), "blood.png");
+	 smokeparticle = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/smoke.png"),"smoke.png");
+	 gooparticle = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/goo.png"),"goo.png");
 	 gooblasttex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/gooblast.png"), "gooblast.png");
+	 splash = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/splash.png"),"splash.png");
+	 sky = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/sky.png"),"sky.png");
 	 world = new World("World 1");
  }
  

@@ -66,8 +66,9 @@ public class ComponentInput extends Component {
 				}
 				if(isKeyDown(KEY_F))
 				{
-					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,2,true);
-					p.velocity = -5;
+					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,1,true);
+					p.velocity = -1;
+					p.tex = FluxMain.smokeparticle.getTextureID();
 					holder.process.world.particleManager.addParticle(p);
 				}
 				fireMessage(new MessagePositionChange(name, "Position", x, y));

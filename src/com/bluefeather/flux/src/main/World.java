@@ -23,6 +23,7 @@ package com.bluefeather.flux.src.main;
 
 import java.util.Random;
 
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
 import com.bluefeather.flux.src.entities.EntityManager;
@@ -54,6 +55,16 @@ public class World {
 	
 	public void worldInit()
 	{
+		worldGen();
+		entityManager.registerEntity(new EntityPlayer(this, 50, 50, "CalmBit", FluxMain.enttex.getTextureID()));
+		entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
+		for(int i = 0;i < 101; i++) {
+		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
+		}
+	}
+	
+	public void worldGen()
+	{
 		//Begin generation
 		for(int i = 0; i < FluxMain.width/50;i++)
 		{
@@ -82,12 +93,6 @@ public class World {
 			System.out.println(i + " of " + FluxMain.width/50);
 		}
 		System.out.println("World " + name + " generated.");
-
-		entityManager.registerEntity(new EntityPlayer(this, 1, 1, "CalmBit", FluxMain.enttex.getTextureID()));
-		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
-		for(int i = 0;i < 101; i++) {
-		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
-		}
 	}
 	
 	
@@ -95,6 +100,18 @@ public class World {
 	
 	public void update()
 	{
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.sky.getTextureID());
+		GL11.glBegin(GL11.GL_QUADS);
+		GL11.glTexCoord2f(0, 0);
+		GL11.glVertex2f(0, 0);
+		GL11.glTexCoord2f(1, 0);
+		GL11.glVertex2f(FluxMain.width, 0);
+		GL11.glTexCoord2f(1, 1);
+		GL11.glVertex2f(FluxMain.width, FluxMain.height);
+		GL11.glTexCoord2f(0, 1);
+		GL11.glVertex2f(0, FluxMain.height);
+		GL11.glEnd();
+		
 		entityManager.update();
 		particleManager.render();
 		particleManager.update();
@@ -108,6 +125,9 @@ public class World {
 				}
 			}
 		}
+		
+		
+		
 	}
 
 }

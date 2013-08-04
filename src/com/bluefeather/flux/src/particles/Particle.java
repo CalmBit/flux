@@ -25,6 +25,7 @@ public class Particle {
 		this.lifetime = time;
 		this.xvs = xvs;
 		this.floatp = floatp;
+		this.tex = tex;
 		if(rand.nextBoolean()) {
 		this.xvelocity = rand.nextFloat()*xvs;
 		}
