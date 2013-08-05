@@ -64,9 +64,9 @@ public class World {
 	public void worldGen()
 	{
 		//Begin generation
-		for(int i = 0; i < FluxMain.width/50;i++)
+		for(int i = 0; i < 100;i++)
 		{
-			for(int j = 0;j < FluxMain.height/50;j++)
+			for(int j = 0;j < 100;j++)
 			{
 				if(i == 8 && j == 7)
 				{
@@ -113,13 +113,13 @@ public class World {
 		entityManager.update();
 		particleManager.render();
 		particleManager.update();
-		for(int i = 0; i < FluxMain.width/50; i++)
+		for(int i = 0; i < 50; i++)
 		{
-			for(int j = 0; j < FluxMain.height/50;j++)
+			for(int j = 0; j < 50;j++)
 			{
 				if(tileMap[i][j] != null) {
 					tileMap[i][j].render();
-					tileMap[i][j].update();
+					//tileMap[i][j].update();
 				}
 			}
 		}

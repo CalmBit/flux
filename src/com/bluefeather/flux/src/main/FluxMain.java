@@ -40,6 +40,8 @@ public class FluxMain {
 	public static int width = 800,height = 600;
 	public static float br = 0.54f,bg = 0.98f,bb = 1f,ba = 1f;
 	public static int fpscap = 120;
+	public Camera camera = new Camera(0,0,0,0,0,0,90,800,0,0);
+	public static float cx,cy;
 	private EnumGameState gameState = EnumGameState.GAME;
 	
 	public static Texture enttex;
@@ -75,7 +77,11 @@ public class FluxMain {
 				displaySplash();
 				break;
 			case GAME:
+				cx = camera.x;
+				cy = camera.y;
 				world.update();
+				camera.processKeyboard(10);
+				camera.translate();
 				break;
 			default:
 				break;

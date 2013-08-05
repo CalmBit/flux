@@ -43,7 +43,7 @@ public class ComponentInput extends Component {
 	
 	public void update() {
 		super.update();
-		if(x >= 0 && x + 50 <= FluxMain.width && y >= 0 && y + 50 <= FluxMain.height) {
+		if(x >= FluxMain.cx && x + 50 <= FluxMain.cx + FluxMain.width && y >= FluxMain.cy && y + 50 <= FluxMain.cy + FluxMain.height) {
 			if(isKeyDown(KEY_SPACE) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) || isKeyDown(KEY_F)  || isKeyDown(KEY_K)) {
 				if(isKeyDown(KEY_SPACE))
 				{
@@ -76,24 +76,24 @@ public class ComponentInput extends Component {
 		}
 		else
 		{
-			if(x < 0)
+			if(x < FluxMain.cx)
 			{
-				x = 0;
+				x = FluxMain.cx;
 				fireMessage(new MessagePositionChange(name, "Position", x, y));
 			}
-			if(x + 50 > FluxMain.width)
+			if(x + 50 > FluxMain.cx + FluxMain.width)
 			{
-				x = FluxMain.width - 50;
+				x = FluxMain.cx + FluxMain.width - 50;
 				fireMessage(new MessagePositionChange(name, "Position", x, y));
 			}
-			if(y < 0)
+			if(y < FluxMain.cy)
 			{
-				y = 0;
+				y = FluxMain.cy;
 				fireMessage(new MessagePositionChange(name, "Position", x, y));
 			}
-			if(y + 50 > FluxMain.height)
+			if(y + 50 > FluxMain.cy + FluxMain.height)
 			{
-				y = FluxMain.height - 50;
+				y = FluxMain.cy + FluxMain.height - 50;
 				fireMessage(new MessagePositionChange(name, "Position", x, y));
 			}
 		}
