@@ -19,8 +19,6 @@ package com.bluefeather.flux.src.main;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
 import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
