@@ -98,7 +98,7 @@ public class World {
 	
 	public void update()
 	{
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.sky.getTextureID());
+		/*GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.sky.getTextureID());
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0, 0);
 		GL11.glVertex2f(0, 0);
@@ -108,18 +108,18 @@ public class World {
 		GL11.glVertex2f(FluxMain.width, FluxMain.height);
 		GL11.glTexCoord2f(0, 1);
 		GL11.glVertex2f(0, FluxMain.height);
-		GL11.glEnd();
+		GL11.glEnd();*/
 		
 		entityManager.update();
 		particleManager.render();
 		particleManager.update();
 		for(int i = 0; i < 50; i++)
 		{
-			for(int j = 0; j < 50;j++)
+			for(int j = 0; j < 10;j++)
 			{
 				if(tileMap[i][j] != null) {
 					tileMap[i][j].render();
-					//tileMap[i][j].update();
+					tileMap[i][j].update();
 				}
 			}
 		}

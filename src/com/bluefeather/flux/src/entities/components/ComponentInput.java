@@ -43,7 +43,7 @@ public class ComponentInput extends Component {
 	
 	public void update() {
 		super.update();
-		if(x >= FluxMain.cx && x + 50 <= FluxMain.cx + FluxMain.width && y >= FluxMain.cy && y + 50 <= FluxMain.cy + FluxMain.height) {
+		if(y >= FluxMain.cy && y + 50 <= FluxMain.cy + FluxMain.height) {
 			if(isKeyDown(KEY_SPACE) || isKeyDown(KEY_S) || isKeyDown(KEY_A) || isKeyDown(KEY_D) || isKeyDown(KEY_F)  || isKeyDown(KEY_K)) {
 				if(isKeyDown(KEY_SPACE))
 				{

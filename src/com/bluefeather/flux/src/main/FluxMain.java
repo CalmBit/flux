@@ -79,6 +79,7 @@ public class FluxMain {
 			case GAME:
 				cx = camera.x;
 				cy = camera.y;
+				System.out.println(cx*50);
 				world.update();
 				camera.processKeyboard(10);
 				camera.translate();
@@ -87,7 +88,7 @@ public class FluxMain {
 				break;
 		}
 		Display.update();
-		Display.sync(fpscap);
+		//Display.sync(fpscap);
 	}
 	Display.destroy();
  }

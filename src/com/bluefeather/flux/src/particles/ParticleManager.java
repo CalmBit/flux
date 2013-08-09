@@ -53,7 +53,7 @@ public class ParticleManager {
 	
 	public void update()
 	{	for(Particle p : particles) {
-			if(p.x >= 0 && p.x + p.sx <= FluxMain.width && p.y >= 0 && p.y + p.sy <= FluxMain.height) {
+			if(p.y >= 0 && p.y + p.sy <= FluxMain.height) {
 				if(World.collisionMap[(int)p.x/50][(int)((p.y+50)/50)-1])
 				{
 					p.y = (int)p.y;
@@ -92,11 +92,7 @@ public class ParticleManager {
 				p.x = (int)p.x + 1;
 				p.xvelocity = 0;
 			}
-			if(p.x + p.sx >= FluxMain.width)
-			{
-				p.x  = (int)FluxMain.width - 9;
-				p.xvelocity = 0;
-			}
+			
 		}
 	
 		for(Particle p : debris)
