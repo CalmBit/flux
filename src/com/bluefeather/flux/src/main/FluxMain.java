@@ -79,9 +79,9 @@ public class FluxMain {
 			case GAME:
 				cx = camera.x;
 				cy = camera.y;
-				System.out.println(cx*50);
+				//System.out.println(cx*50);
 				world.update();
-				camera.processKeyboard(10);
+				camera.processKeyboard(1);
 				camera.translate();
 				break;
 			default:

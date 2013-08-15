@@ -19,6 +19,7 @@ package com.bluefeather.flux.src.entities;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.bluefeather.flux.src.entities.components.ComponentInput;
+import com.bluefeather.flux.src.entities.components.ComponentInventory;
 import com.bluefeather.flux.src.main.World;
 
 
@@ -30,6 +31,7 @@ public class EntityPlayer extends Entity {
 		super("Player", world, x, y, 100, 5, TexID);
 		this.networkedName = networkedName;
 		componentManager.addComponent(new ComponentInput(componentManager));
+		componentManager.addComponent(new ComponentInventory(componentManager,9));
 		System.out.println(this.networkedName + " logged in.");
 	}
 

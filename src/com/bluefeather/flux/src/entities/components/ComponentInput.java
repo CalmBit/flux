@@ -26,7 +26,10 @@ import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageAscending;
 import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
+import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
+import com.bluefeather.flux.src.entities.components.message.MessageReadInventorySlot;
+import com.bluefeather.flux.src.items.ItemGem;
 import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.particles.Particle;
 
@@ -49,6 +52,7 @@ public class ComponentInput extends Component {
 				{
 					y -= 5;
 					fireMessage(new MessageAscending(this.name, "Position"));
+					fireMessage(new MessageReadInventorySlot(this.name, "Inventory", 0));
 				}
 				if(isKeyDown(KEY_A))
 				{
@@ -107,6 +111,12 @@ public class ComponentInput extends Component {
 			MessagePositionChange pmessage = (MessagePositionChange) message;
 			x = pmessage.nx;
 			y = pmessage.ny;
+		}
+		if(message.name == "ItemPacket")
+		{
+			MessageItemPacket packet = (MessageItemPacket) message;
+			ItemGem gem = (ItemGem)packet.itemReturned;
+			gem.sayHi();
 		}
 
 	}
