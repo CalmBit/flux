@@ -1,4 +1,9 @@
 package com.bluefeather.flux.src.tile;
+
+import org.lwjgl.opengl.GL11;
+
+import com.bluefeather.flux.src.main.FluxMain;
+
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -30,5 +35,12 @@ public class TileDirt extends Tile {
 		
 
 	}
+	
+	public void render()
+	{
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.dirttex.getTextureID());
+		super.render();
+	}
+	}
 
-}
+

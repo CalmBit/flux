@@ -24,7 +24,7 @@ import com.bluefeather.flux.src.entities.components.prefixes.PrefixGodly;
 import com.bluefeather.flux.src.main.World;
 
 
-public class EntityMob extends Entity {
+public class EntityMob extends EntityLiving {
 
 	public EntityMob(String name, World world, float x, float y, int i_health, int i_damage, int texID) {
 		super(name,world, x, y, i_health, i_damage, texID);

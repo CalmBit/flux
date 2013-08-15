@@ -24,15 +24,18 @@ import java.util.Random;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
+import com.bluefeather.flux.src.entities.EntityItemDrop;
 import com.bluefeather.flux.src.entities.EntityManager;
 import com.bluefeather.flux.src.entities.EntityMob;
 import com.bluefeather.flux.src.entities.EntityPlayer;
+import com.bluefeather.flux.src.items.ItemGem;
 import com.bluefeather.flux.src.particles.Particle;
 import com.bluefeather.flux.src.particles.ParticleManager;
 import com.bluefeather.flux.src.tile.Tile;
 import com.bluefeather.flux.src.tile.TileDirt;
 import com.bluefeather.flux.src.tile.TileGooBlaster;
 import com.bluefeather.flux.src.tile.TileGrass;
+import com.bluefeather.flux.src.utils.EnumColor;
 
 public class World {
 	
@@ -55,7 +58,8 @@ public class World {
 	{
 		worldGen();
 		entityManager.registerEntity(new EntityPlayer(this, 50, 50, "CalmBit", FluxMain.enttex.getTextureID()));
-		entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
+		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
+		entityManager.registerEntity(new EntityItemDrop(this,1,1,new ItemGem(EnumColor.WHITE)));
 		for(int i = 0;i < 101; i++) {
 		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
 		}

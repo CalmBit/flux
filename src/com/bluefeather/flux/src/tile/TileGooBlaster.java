@@ -18,6 +18,12 @@ package com.bluefeather.flux.src.tile;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+
+import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.Color;
+
+import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.main.World;
 import com.bluefeather.flux.src.particles.Particle;
 import com.bluefeather.flux.src.particles.ParticleEmitter;
@@ -36,6 +42,11 @@ public class TileGooBlaster extends Tile {
 
 	public void update() {
 		emitter.update();
+	}
+	public void render()
+	{
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.gooblasttex.getTextureID());
+		super.render();
 	}
 
 }

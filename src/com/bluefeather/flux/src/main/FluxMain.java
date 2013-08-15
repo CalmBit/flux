@@ -54,6 +54,7 @@ public class FluxMain {
 	public static Texture smokeparticle;
 	public static Texture splash;
 	public static Texture sky;
+	public static Texture item_gem;
  public void start() throws IOException {
 	try {
 		Display.setDisplayMode(new DisplayMode(width, height));
@@ -147,6 +148,7 @@ public class FluxMain {
 	 gooblasttex = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/gooblast.png"), "gooblast.png");
 	 splash = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/splash.png"),"splash.png");
 	 sky = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/sky.png"),"sky.png");
+	 item_gem = addTexture("PNG0",ResourceLoader.getResourceAsStream("res/gem.png"),"gem.png");
 	 world = new World("World 1");
  }
  

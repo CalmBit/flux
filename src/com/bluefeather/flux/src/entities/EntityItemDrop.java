@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities.components.message;
+package com.bluefeather.flux.src.entities;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,13 +18,14 @@ package com.bluefeather.flux.src.entities.components.message;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-public class MessageReadInventorySlot extends Message {
+import com.bluefeather.flux.src.items.Item;
+import com.bluefeather.flux.src.main.World;
 
-	public int slot;
-	public MessageReadInventorySlot(String originatorName,
-			String destinationName, int slot) {
-		super("ReadInventorySlot", 9, originatorName, destinationName);
-		this.slot = slot;
+public class EntityItemDrop extends Entity {
+
+	public EntityItemDrop(World world, float x, float y, Item item) {
+		super(item.registeredName, world, x, y, item.texId);
+		
 	}
 
 }

@@ -1,4 +1,9 @@
 package com.bluefeather.flux.src.tile;
+
+import org.lwjgl.opengl.GL11;
+
+import com.bluefeather.flux.src.main.FluxMain;
+
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -29,6 +34,12 @@ public class TileGrass extends Tile {
 	public void update() {
 		
 
+	}
+	
+	public void render()
+	{
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.grasstex.getTextureID());
+		super.render();
 	}
 
 }

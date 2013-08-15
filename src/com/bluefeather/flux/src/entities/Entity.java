@@ -37,7 +37,7 @@ public class Entity {
 	public World world;
 	public ComponentManager componentManager = new ComponentManager(this);
 	public int texID;
-	public Entity(String name, World world, float x, float y, int i_health, int i_damage, int texID)
+	public Entity(String name, World world, float x, float y, int texID)
 	{
 		boolean hI = false;
 		this.texID = texID;
@@ -46,7 +46,7 @@ public class Entity {
 		if(name == "Player") hI = true;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
 		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
-		componentManager.addComponent(new ComponentEntValues(componentManager, i_health, i_damage));
+		
 		
 	}
 	

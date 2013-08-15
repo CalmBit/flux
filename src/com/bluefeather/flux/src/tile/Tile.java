@@ -40,18 +40,6 @@ public abstract class Tile {
 	
 	public void render()
 	{
-		if(name == "Dirt")
-		{
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.dirttex.getTextureID());
-		}
-		else if(name == "Grass")
-		{
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.grasstex.getTextureID());
-		}
-		else
-		{
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.gooblasttex.getTextureID());
-		}
 		//GL11.glColor3f(r, g, b);
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0f, 0f);

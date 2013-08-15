@@ -52,7 +52,6 @@ public class ComponentInput extends Component {
 				{
 					y -= 5;
 					fireMessage(new MessageAscending(this.name, "Position"));
-					fireMessage(new MessageReadInventorySlot(this.name, "Inventory", 0));
 				}
 				if(isKeyDown(KEY_A))
 				{
@@ -116,7 +115,6 @@ public class ComponentInput extends Component {
 		{
 			MessageItemPacket packet = (MessageItemPacket) message;
 			ItemGem gem = (ItemGem)packet.itemReturned;
-			gem.sayHi();
 		}
 
 	}

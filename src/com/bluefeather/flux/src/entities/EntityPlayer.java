@@ -23,7 +23,7 @@ import com.bluefeather.flux.src.entities.components.ComponentInventory;
 import com.bluefeather.flux.src.main.World;
 
 
-public class EntityPlayer extends Entity {
+public class EntityPlayer extends EntityLiving {
 	
 	private String networkedName;
 	
