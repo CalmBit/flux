@@ -18,6 +18,7 @@ package com.bluefeather.flux.src.entities;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
+import com.bluefeather.flux.src.entities.components.ComponentGUI;
 import com.bluefeather.flux.src.entities.components.ComponentInput;
 import com.bluefeather.flux.src.entities.components.ComponentInventory;
 import com.bluefeather.flux.src.main.World;
@@ -32,7 +33,9 @@ public class EntityPlayer extends EntityLiving {
 		this.networkedName = networkedName;
 		componentManager.addComponent(new ComponentInput(componentManager));
 		componentManager.addComponent(new ComponentInventory(componentManager,9));
+		componentManager.addComponent(new ComponentGUI(componentManager,TexID));
 		System.out.println(this.networkedName + " logged in.");
+		weight = 5;
 	}
 
 }

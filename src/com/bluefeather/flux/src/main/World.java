@@ -59,7 +59,8 @@ public class World {
 		worldGen();
 		entityManager.registerEntity(new EntityPlayer(this, 50, 50, "CalmBit", FluxMain.enttex.getTextureID()));
 		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
-		entityManager.registerEntity(new EntityItemDrop(this,1,1,new ItemGem(EnumColor.WHITE)));
+		entityManager.registerEntity(new EntityItemDrop(this,170,170,new ItemGem(EnumColor.WHITE)));
+		entityManager.registerEntity(new EntityItemDrop(this,220,220,new ItemGem(EnumColor.WHITE)));
 		for(int i = 0;i < 101; i++) {
 		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
 		}

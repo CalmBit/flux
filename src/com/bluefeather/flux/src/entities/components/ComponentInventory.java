@@ -33,7 +33,7 @@ public class ComponentInventory extends Component {
 		super(holder, "Inventory");
 		this.slots = slots;
 		inv = new Item[slots];
-		inv[0] = new ItemGem(EnumColor.RED);
+		
 	}
 
 
@@ -43,6 +43,20 @@ public class ComponentInventory extends Component {
 		{
 			MessageReadInventorySlot r = (MessageReadInventorySlot)message;
 			fireMessage(new MessageItemPacket(this.name,r.originatorName,inv[r.slot]));
+		}
+		if(message.name == "ItemPacket")
+		{
+			MessageItemPacket i = (MessageItemPacket)message;
+			fireMessage(new MessageItemPacket(this.name,"GUI",i.itemReturned));
+			for(int id = 0;id < slots;id++)
+			{
+				if(inv[id] == null)
+				{
+					inv[id] = i.itemReturned;
+					System.out.println("A " + inv[id].registeredName + " was picked up in slot " + id);
+					break;
+				}
+			}
 		}
 		
 	}

@@ -24,6 +24,7 @@ import java.util.List;
 import com.bluefeather.flux.src.entities.Entity;
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageDeath;
+import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentManager {
@@ -68,9 +69,22 @@ public class ComponentManager {
 			found = true;
 			if(message.name == "Death")
 			{
-				disperseMessage(new MessageDeath("Manager", "Render"));
+				MessageDeath d = (MessageDeath)message;
+				disperseMessage(new MessageDeath("Manager", "Render",d.announce));
 				stop = true;
+				process.world.entityManager.deregisterEntity(process.getID());
+				if(d.announce)
 				System.out.println(process.name + " Died...");
+			}
+		}
+		else if(message.destinationName == "Entity")
+		{
+			found = true;
+			if(message.name == "PositionChange")
+			{
+				MessagePositionChange mcp = (MessagePositionChange)message;
+				process.x = mcp.nx;
+				process.y = mcp.ny;
 			}
 		}
 		for(Component c : components)

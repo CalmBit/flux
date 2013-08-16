@@ -18,9 +18,13 @@ package com.bluefeather.flux.src.entities.components;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
+import com.bluefeather.flux.src.entities.Entity;
+import com.bluefeather.flux.src.entities.EntityItemDrop;
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
+import com.bluefeather.flux.src.entities.components.message.MessageDeath;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
+import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.World;
 
@@ -55,7 +59,7 @@ public class ComponentPosition extends Component {
 			velocity += 0.1;
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
-			//System.out.println(velocity);
+			fireMessage(new MessagePositionChange(this.name,"Entity",x,y));
 		}
 		else
 		{
@@ -83,6 +87,7 @@ public class ComponentPosition extends Component {
 			//update the other components accordingly
 			fireMessage(new MessagePositionChange(this.name,"Input",x,y));
 			fireMessage(new MessagePositionChange(this.name,"Render",x,y));
+			fireMessage(new MessagePositionChange(this.name,"Entity",x,y));
 			//make sure the bloody thing is living before executing a command that isn't there
 			if(living)
 			{
@@ -128,19 +133,40 @@ public class ComponentPosition extends Component {
 		ascending = false;
 		if(strafing) strafing = false;
 		
-
+		for(Entity ent : holder.process.world.entityManager.entities)
+		{
+			boolean collision = false;
+			if(ent == this.holder.process) continue;
+			if((this.x < ent.x + 50 && this.x + 50 > ent.x && (this.y + 50 >= ent.y && this.y <= ent.y + 50)))
+			{
+				//System.out.println(holder.process.name + " has collided with " + ent.name);
+				collision = true;
+				
+				if(this.holder.process.name == "Player")
+				{
+					EntityItemDrop ne = (EntityItemDrop)ent;
+					if(ne.item != null)
+					{
+						fireMessage(new MessageItemPacket(this.name,"Inventory",ne.item));
+						ent.componentManager.disperseMessage(new MessageDeath("Null","Manager",false));
+					}
+				}
+				if(this.holder.process.weight > ent.weight)
+				ent.x = this.x - 50;
+				else
+				this.x = ent.x - 50;
+			}
+			//System.out.println(ent.name + ":" + ent.x + "," + ent.y + "," + collision); 
+			
+		}
+		
 	}
 	
 	public void fireMessage(Message message)
 	{
-		if(message.destinationName == "Input" && !hasInput)
-		{
-			
-		}
-		else
-		{
-			super.fireMessage(message);
-		}
+		if(message.destinationName == "Input" && !hasInput) return;
+		else super.fireMessage(message);
+		
 	}
 
 

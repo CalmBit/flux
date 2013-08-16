@@ -77,7 +77,7 @@ public class ComponentEntValues extends Component {
 			super.update();
 			if(health <= 0)
 			{
-				fireMessage(new MessageDeath(this.name,"Manager"));
+				fireMessage(new MessageDeath(this.name,"Manager",true));
 			}
 		}
 

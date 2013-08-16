@@ -20,9 +20,11 @@ package com.bluefeather.flux.src.entities.components.message;
  */
 public class MessageDeath extends Message {
 
+	public boolean announce;
 	public MessageDeath(String originatorName,
-			String destinationName) {
+			String destinationName, boolean announce) {
 		super("Death", 5, originatorName, destinationName);
+		this.announce = announce;
 	}
 
 }

@@ -25,6 +25,7 @@ public class EntityManager {
 	private static int uID = 1;
 	
 	public ArrayList<Entity> entities = new ArrayList<Entity>();
+	public ArrayList<Entity> delete = new ArrayList<Entity>();
 	public EntityManager()
 	{
 		
@@ -46,7 +47,7 @@ public class EntityManager {
 		{
 			if(ent.uID == uID)
 			{
-				entities.remove(ent);
+				delete.add(ent);
 			}
 		}
 	}
@@ -56,6 +57,10 @@ public class EntityManager {
 		for(Entity en : entities)
 		{
 			en.update();
+		}
+		for(Entity en : delete)
+		{
+			entities.remove(en);
 		}
 	}
 	

@@ -37,6 +37,9 @@ public class Entity {
 	public World world;
 	public ComponentManager componentManager = new ComponentManager(this);
 	public int texID;
+	//Copy of the position to be acessible by components and other things.
+	public float x,y;
+	public int weight;
 	public Entity(String name, World world, float x, float y, int texID)
 	{
 		boolean hI = false;
@@ -46,6 +49,8 @@ public class Entity {
 		if(name == "Player") hI = true;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
 		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
+		this.x = x;
+		this.y = y;
 		
 		
 	}
@@ -55,6 +60,9 @@ public class Entity {
 		componentManager.update();
 	}
 	
+	public int getID() {
+		return uID;
+	}
 	
 	public void registerComponent(Component component)
 	{
