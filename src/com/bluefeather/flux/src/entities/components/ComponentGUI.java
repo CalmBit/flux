@@ -30,17 +30,17 @@ public class ComponentGUI extends Component {
 			{
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glBegin(GL11.GL_LINES);
-			GL11.glVertex2f(doffset+(i*50), doffset);
-			GL11.glVertex2f(doffset+(i*50), 64);
+			GL11.glVertex2f(doffset+(i*50)+FluxMain.cx, doffset + FluxMain.cy);
+			GL11.glVertex2f(doffset+(i*50) + FluxMain.cx, 64 + FluxMain.cy);
 			
-			GL11.glVertex2f(doffset+(i*50), doffset);
-			GL11.glVertex2f(doffset+(i*50) + 50, doffset);
+			GL11.glVertex2f(doffset+(i*50) + FluxMain.cx, doffset + FluxMain.cy);
+			GL11.glVertex2f(doffset+(i*50) + FluxMain.cx + 50, doffset + FluxMain.cy);
 			
-			GL11.glVertex2f(doffset+(i*50)+50, doffset);
-			GL11.glVertex2f(doffset+(i*50)+50, 64);
+			GL11.glVertex2f(doffset+(i*50)+50 + FluxMain.cx, doffset + FluxMain.cy);
+			GL11.glVertex2f(doffset+(i*50)+50 + FluxMain.cx, 64 + FluxMain.cy);
 			
-			GL11.glVertex2f(doffset+(i*50) + 50, 64);
-			GL11.glVertex2f(doffset+(i*50), 64);
+			GL11.glVertex2f(doffset+(i*50) + 50 + FluxMain.cx, 64 + FluxMain.cy);
+			GL11.glVertex2f(doffset+(i*50) + FluxMain.cx, 64 + FluxMain.cy);
 			GL11.glEnd();
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 				if(inv[i] != null)
@@ -48,13 +48,13 @@ public class ComponentGUI extends Component {
 					GL11.glBindTexture(GL11.GL_TEXTURE_2D, inv[i].texId);
 					GL11.glBegin(GL11.GL_QUADS);
 					GL11.glTexCoord2f(0, 0);
-					GL11.glVertex2f(doffset+(i*50), doffset);
+					GL11.glVertex2f(doffset+(i*50) + FluxMain.cx, doffset + FluxMain.cy);
 					GL11.glTexCoord2f(1, 0);
-					GL11.glVertex2f(doffset+(i*50)+50, doffset);
+					GL11.glVertex2f(doffset+(i*50)+50 + FluxMain.cx, doffset + FluxMain.cy);
 					GL11.glTexCoord2f(1, 1);
-					GL11.glVertex2f(doffset+(i*50)+50, doffset+50);
+					GL11.glVertex2f(doffset+(i*50)+50 + FluxMain.cx, doffset+50 + FluxMain.cy);
 					GL11.glTexCoord2f(0, 1);
-					GL11.glVertex2f(doffset+(i*50), doffset+50);
+					GL11.glVertex2f(doffset+(i*50) + FluxMain.cx, doffset+50 + FluxMain.cy);
 					GL11.glEnd();
 				}
 			}

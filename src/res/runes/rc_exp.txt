@@ -1,0 +1,30 @@
+1. ELEMENTAL SYMBOL
+Denotes the elemental basis for the runic circle.
+OPTIONS:
+FIRE,
+WATER,
+EARTH,
+AIR
+
+2. PRIMARY ACC RUNE
+Denotes the primary quality of the runic circle.
+OPTIONS:
+SHIELD,
+(unfinished)
+
+3 + 4. SECONDARY ACC RUNE
+Denotes an additional effect from the runic circle.
+OPTIONS:
+RANGE(numbers, 3 base, 4 modifier)
+
+5. TETRITARY ACC RUNE
+Denotes an extra (expensive/rare) quality for the runic circle.
+OPTIONS:
+(unfinished)
+
+6. LEY LINES
+Denotes the intention for the rune.
+OPTIONS:
+VERT. LINEAR(allies + self),
+HORIZ. LINEAR(enemies),
+DIAG. LINEAR(all).

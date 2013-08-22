@@ -3,6 +3,7 @@ package com.bluefeather.flux.src.tile;
 import org.lwjgl.opengl.GL11;
 
 import com.bluefeather.flux.src.main.FluxMain;
+import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
@@ -26,7 +27,7 @@ import com.bluefeather.flux.src.main.FluxMain;
 public class TileDirt extends Tile {
 
 	public TileDirt(float x, float y) {
-		super(x, y,0.3f,0.1f,0.01f,"Dirt");
+		super(x, y,0.3f,0.1f,0.01f,"Dirt",EnumLightLevels.ZERO);
 		
 	}
 

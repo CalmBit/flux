@@ -21,14 +21,16 @@ package com.bluefeather.flux.src.tile;
 import org.lwjgl.opengl.GL11;
 
 import com.bluefeather.flux.src.main.FluxMain;
+import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 public abstract class Tile {
 	
 	public float x,y;
 	public float r,g,b;
 	public String name;
+	public EnumLightLevels light;
 	
-	public Tile(float x, float y, float r, float g, float b, String name)
+	public Tile(float x, float y, float r, float g, float b, String name, EnumLightLevels light)
 	{
 		this.x = x;
 		this.y = y;
@@ -36,11 +38,13 @@ public abstract class Tile {
 		this.r = r;
 		this.g = g;
 		this.b = b;
+		this.light = light;
 	}
 	
 	public void render()
 	{
 		//GL11.glColor3f(r, g, b);
+		//light.col.bind();
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0f, 0f);
 		GL11.glVertex2f(x, y);
@@ -52,7 +56,6 @@ public abstract class Tile {
 		GL11.glVertex2f(x, y + 50);
 		GL11.glEnd();
 		
-
 	}
 	
 	public abstract void update();

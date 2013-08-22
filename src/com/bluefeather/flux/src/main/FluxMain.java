@@ -20,17 +20,11 @@ package com.bluefeather.flux.src.main;
  */
 import static org.lwjgl.opengl.GL11.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
-
-import javax.imageio.ImageIO;
-
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -57,7 +51,7 @@ public class FluxMain {
 	public static Texture sky;
 	public static Texture item_gem;
 	public static Texture item_null;
- public void start() throws IOException {
+ public final void start() throws IOException {
 	try {
 		Display.setDisplayMode(new DisplayMode(width, height));
 		Display.create();
@@ -68,20 +62,20 @@ public class FluxMain {
 		e.printStackTrace();
 		System.exit(0);
 	}
-	
+
 	init();
-	
-	while(!Display.isCloseRequested()) {
-		glClearColor(br,bg,bb,ba);
+
+	while (!Display.isCloseRequested()) {
+		glClearColor(br,bg, bb, ba);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		switch(gameState)
+		switch(gameState) 
 		{
 			case SPLASH:
 				displaySplash();
 				break;
 			case GAME:
-				cx = camera.x;
-				cy = camera.y;
+				cx = camera.cx;
+				cy = camera.cy;
 				//System.out.println(cx*50);
 				world.update();
 				camera.processKeyboard(1);
@@ -96,7 +90,7 @@ public class FluxMain {
 	Display.destroy();
  }
 
- public void displaySplash()
+ public final void displaySplash()
  {
 	
 	 splash.bind();
@@ -112,7 +106,7 @@ public class FluxMain {
 	 glEnd();
  }
  
- public Texture addTexture(String format, InputStream stream, String path)
+ public final Texture addTexture(final String format, final InputStream stream, final String path)
 	{
 		try {
 		System.out.println("File " + path + " was loaded.");
@@ -127,7 +121,7 @@ public class FluxMain {
 	}
  
  
- public void init() {
+ public final void init() {
 	 
 	 glClearColor(0f,0f,0f,1f);
 	 glMatrixMode(GL_PROJECTION);
@@ -158,7 +152,7 @@ public class FluxMain {
  
 
  
- public static void main(String[] args) throws IOException {
+ public static void main(final String[] args) throws IOException {
 	 FluxMain thegame =  new FluxMain();
 	 thegame.start();
  }

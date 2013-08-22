@@ -27,13 +27,14 @@ import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.main.World;
 import com.bluefeather.flux.src.particles.Particle;
 import com.bluefeather.flux.src.particles.ParticleEmitter;
+import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 public class TileGooBlaster extends Tile {
 
 	World world;
 	protected ParticleEmitter emitter;
 	public TileGooBlaster(float x, float y, World world) {
-		super(x, y, 1,1, 1, "GooBlaster");
+		super(x, y, 1,1, 1, "GooBlaster",EnumLightLevels.FIFTEEN);
 		this.world = world;
 		Particle p = new Particle(x+25,y-8, 100 ,3,false);
 		p.velocity = -5;

@@ -36,14 +36,17 @@ import com.bluefeather.flux.src.tile.TileDirt;
 import com.bluefeather.flux.src.tile.TileGooBlaster;
 import com.bluefeather.flux.src.tile.TileGrass;
 import com.bluefeather.flux.src.utils.EnumColor;
+import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 public class World {
 	
 	
 	private String name;
+	//ugly hacks for tiles
 	public Tile[][] tileMap = new Tile[100][100];
 	public static boolean[][] collisionMap = new boolean[100][100];
 	public static Vector2f[][] posMap = new Vector2f[100][100];
+	public EnumLightLevels[][] lightMap = new EnumLightLevels[100][100];
 	public EntityManager entityManager = new EntityManager();
 	public ParticleManager particleManager = new ParticleManager(1000);
 	public Random basRand = new Random();
@@ -91,7 +94,10 @@ public class World {
 					collisionMap[i][j] = true;
 					posMap[i][j] = new Vector2f(i*50,j*50);
 				}
-				
+				if(tileMap[i][j] != null)
+				{
+					lightMap[i][j] = tileMap[i][j].light;
+				}
 			}
 			System.out.println(i + " of " + FluxMain.width/50);
 		}
@@ -122,7 +128,7 @@ public class World {
 		{
 			for(int j = 0; j < 10;j++)
 			{
-				if(tileMap[i][j] != null) {
+				if(tileMap[i][j] != null && tileMap[i][j].x + 50 > FluxMain.cx && tileMap[i][j].x < FluxMain.cx + 800) {
 					tileMap[i][j].render();
 					tileMap[i][j].update();
 				}

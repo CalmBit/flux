@@ -20,6 +20,7 @@ public class Camera {
     public float x = 0;
     public float y = 0;
     public float z = 0;
+    public float cx = 0,cy = 0,cz = 0;
     // Rotation pitch yaw roll
     private float pitch = 0;
     private float yaw = 0;
@@ -187,6 +188,9 @@ public class Camera {
         glRotatef(yaw, 0, 1, 0);
         glRotatef(roll, 0, 0, 1);
         glTranslatef(-x, -y, -z);
+        cx += x;
+        cy += y;
+        cz += z;
         glPopAttrib();
     }
 }
