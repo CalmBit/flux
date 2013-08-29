@@ -23,16 +23,17 @@ import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessageReadInventorySlot;
 import com.bluefeather.flux.src.items.Item;
 import com.bluefeather.flux.src.items.ItemGem;
+import com.bluefeather.flux.src.items.ItemStack;
 import com.bluefeather.flux.src.utils.EnumColor;
 
 public class ComponentInventory extends Component {
 
 	public static int slots;
-	public Item[] inv;
+	public ItemStack[] inv;
 	public ComponentInventory(ComponentManager holder, int slots) {
 		super(holder, "Inventory");
 		this.slots = slots;
-		inv = new Item[slots];
+		inv = new ItemStack[slots];
 		
 	}
 
@@ -47,13 +48,26 @@ public class ComponentInventory extends Component {
 		if(message.name == "ItemPacket")
 		{
 			MessageItemPacket i = (MessageItemPacket)message;
-			fireMessage(new MessageItemPacket(this.name,"GUI",i.itemReturned));
-			for(int id = 0;id < slots;id++)
+			for(int a = 0;a < inv.length;a++)
 			{
-				if(inv[id] == null)
+				if(inv[a] != null)
 				{
-					inv[id] = i.itemReturned;
-					System.out.println("A " + inv[id].registeredName + " was picked up in slot " + id);
+					//Make sure there isn't already a non-full same item stack
+					if(inv[a].item.registeredName == i.itemReturned.item.registeredName && inv[a].item.maxStackSize > inv[a].quanity)
+					{
+						inv[a].quanity++;
+						System.out.println("Another " + inv[a].item.registeredName + " was added to slot " + a + ".");
+						System.out.println("That makes " + inv[a].quanity + ".");
+						System.out.println(inv[a].item.maxStackSize);
+						break;
+					}
+				}
+				//Otherwise, create a stack in a new slot
+				else
+				{
+					inv[a] = i.itemReturned;
+					System.out.println("A " + inv[a].item.registeredName + " was added to slot " + a + ".");
+					fireMessage(new MessageItemPacket(this.name,"GUI",i.itemReturned));
 					break;
 				}
 			}

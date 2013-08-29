@@ -29,11 +29,11 @@ public class Particle {
 
 	public float velocity = 1;
 	public float xvelocity;
-	public int lifetime;
+	public short lifetime;
 	public int tex;
 	public int xvs;
 	public boolean floatp;
-	public Particle(float i_x, float i_y, int time, int xvs, boolean floatp)
+	public Particle(float i_x, float i_y, short time, int xvs, boolean floatp)
 	{
 		this.x= i_x;
 		this.y = i_y;
@@ -60,10 +60,5 @@ public class Particle {
 		return c;
 	}
 	
-	
-	public void render()
-	{
-		
-	}
 
 }

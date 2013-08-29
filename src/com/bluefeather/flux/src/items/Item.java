@@ -22,8 +22,14 @@ public abstract class Item {
 	
 	public String registeredName;
 	public int texId;
-	public Item(String name) {
+	public int maxStackSize;
+	public Item(String name, int maxStackSize) {
 		this.registeredName = name;
+		this.maxStackSize = maxStackSize;
+	}
+	public Item(String name)
+	{
+		this(name,64);
 	}
 	
 	public abstract Item getInstance();

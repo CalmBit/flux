@@ -69,7 +69,7 @@ public class ComponentInput extends Component {
 				}
 				if(isKeyDown(KEY_F))
 				{
-					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, 100,1,true);
+					Particle p = new Particle(x+25+baseRand.nextFloat()*5, y, (short) 100,1,true);
 					p.velocity = -1;
 					p.tex = FluxMain.smokeparticle.getTextureID();
 					holder.process.world.particleManager.addParticle(p);
@@ -114,7 +114,7 @@ public class ComponentInput extends Component {
 		if(message.name == "ItemPacket")
 		{
 			MessageItemPacket packet = (MessageItemPacket) message;
-			ItemGem gem = (ItemGem)packet.itemReturned;
+			ItemGem gem = (ItemGem)packet.itemReturned.item;
 		}
 
 	}

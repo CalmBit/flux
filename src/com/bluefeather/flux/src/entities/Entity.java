@@ -37,7 +37,7 @@ public class Entity {
 	public World world;
 	public ComponentManager componentManager = new ComponentManager(this);
 	public int texID;
-	//Copy of the position to be acessible by components and other things.
+	//Copy of the position to be accessible by components and other things.
 	public float x,y;
 	public int weight;
 	public Entity(String name, World world, float x, float y, int texID)

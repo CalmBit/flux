@@ -1,4 +1,4 @@
-package com.bluefeather.flux.src.entities.components.message;
+package com.bluefeather.flux.src.items;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -18,16 +18,14 @@ package com.bluefeather.flux.src.entities.components.message;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.bluefeather.flux.src.items.Item;
-import com.bluefeather.flux.src.items.ItemStack;
+public class ItemStack {
 
-public class MessageItemPacket extends Message {
-
-	public ItemStack itemReturned;
-	public MessageItemPacket(String originatorName,
-			String destinationName, ItemStack item) {
-		super("ItemPacket", 10, originatorName, destinationName);
-		this.itemReturned = item;
+	public static int maxQuanity;
+	public int quanity;
+	public Item item;
+	public ItemStack(int quanity, Item item)
+	{
+		this.quanity = quanity;
+		this.item = item;;
 	}
-
 }

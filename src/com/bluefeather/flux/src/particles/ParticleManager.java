@@ -61,7 +61,7 @@ public class ParticleManager {
 					p.xvelocity = 0;
 					p.lifetime--;
 					if(p.lifetime <= 0) {
-					debris.add(p);
+						debris.add(p);
 					}
 				}
 				else if(!World.collisionMap[(int)p.x/50][(int)((p.y+50)/50)-1])
@@ -99,6 +99,9 @@ public class ParticleManager {
 		{
 			destroyParticle(p);
 		}
+		
+		debris.clear();
+		
 	}
 	
 	public void destroyParticle(Particle p)
@@ -121,6 +124,7 @@ public class ParticleManager {
 			GL11.glRotatef(p.rotx, 0, 0, 1);
 			GL11.glRotatef(p.roty, 1, 0, 0);
 			GL11.glTranslatef(-(p.x + (p.sx/2)),-(p.y + (p.sy/2)), 0);
+			
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, p.tex);
 			GL11.glBegin(GL11.GL_QUADS);
 			GL11.glTexCoord2f(0, 0);

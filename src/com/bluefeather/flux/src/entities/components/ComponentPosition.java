@@ -26,6 +26,7 @@ import com.bluefeather.flux.src.entities.components.message.MessageDeath;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
 import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
+import com.bluefeather.flux.src.items.ItemStack;
 import com.bluefeather.flux.src.main.World;
 
 public class ComponentPosition extends Component {
@@ -147,7 +148,7 @@ public class ComponentPosition extends Component {
 					EntityItemDrop ne = (EntityItemDrop)ent;
 					if(ne.item != null)
 					{
-						fireMessage(new MessageItemPacket(this.name,"Inventory",ne.item));
+						fireMessage(new MessageItemPacket(this.name,"Inventory",new ItemStack(1,ne.item)));
 						ent.componentManager.disperseMessage(new MessageDeath("Null","Manager",false));
 					}
 				}

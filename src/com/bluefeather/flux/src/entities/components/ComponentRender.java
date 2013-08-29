@@ -86,7 +86,7 @@ public class ComponentRender extends Component {
 			if(d.announce) {
 			for(int i = 0;i < 20;i++)
 			{
-				Particle p = new Particle(x+25, y, 100,2,false);
+				Particle p = new Particle(x+25, y, (short)100,2,false);
 				p.velocity = -3;
 				p.tex = FluxMain.bloodparticle.getTextureID();
 				holder.process.world.particleManager.addParticle(p);

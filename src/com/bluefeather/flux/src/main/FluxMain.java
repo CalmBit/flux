@@ -34,7 +34,7 @@ public class FluxMain {
 	public static int width = 800,height = 600;
 	public static float br = 0.54f,bg = 0.98f,bb = 1f,ba = 1f;
 	//Currently unused, needs all the FPS it can get /w particles
-	public static int fpscap = 120;
+	public static int fpscap = 240;
 	public Camera camera = new Camera(0,0,0,0,0,0,90,800,0,0);
 	public static float cx,cy;
 	private EnumGameState gameState = EnumGameState.GAME;
@@ -56,6 +56,7 @@ public class FluxMain {
 		Display.setDisplayMode(new DisplayMode(width, height));
 		Display.create();
 		Display.setTitle("Flüx Engine V.0.0.1");
+	
 		
 	} 
 	catch(LWJGLException e) {
@@ -76,7 +77,6 @@ public class FluxMain {
 			case GAME:
 				cx = camera.cx;
 				cy = camera.cy;
-				//System.out.println(cx*50);
 				world.update();
 				camera.processKeyboard(1);
 				camera.translate();
@@ -85,7 +85,7 @@ public class FluxMain {
 				break;
 		}
 		Display.update();
-		//Display.sync(fpscap);
+		Display.sync(fpscap);
 	}
 	Display.destroy();
  }

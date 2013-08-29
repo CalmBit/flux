@@ -64,9 +64,6 @@ public class World {
 		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
 		entityManager.registerEntity(new EntityItemDrop(this,170,170,new ItemGem(EnumColor.WHITE)));
 		entityManager.registerEntity(new EntityItemDrop(this,220,220,new ItemGem(EnumColor.WHITE)));
-		for(int i = 0;i < 101; i++) {
-		particleManager.addParticle(new Particle(basRand.nextInt(100), basRand.nextInt(100),1000,5, false));
-		}
 	}
 	
 	public void worldGen()
@@ -76,12 +73,12 @@ public class World {
 		{
 			for(int j = 0;j < 100;j++)
 			{
-				if(i == 8 && j == 7)
+				/*if(i == 8 && j == 7)
 				{
 					tileMap[i][j] = new TileGooBlaster(i*50,j*50, this);
 					collisionMap[i][j] = true;
 					posMap[i][j] = new Vector2f(i*50,j*50);
-				}
+				}*/
 				if(j == 8)
 				{
 					tileMap[i][j] = new TileGrass(i*50,j*50);
@@ -99,7 +96,7 @@ public class World {
 					lightMap[i][j] = tileMap[i][j].light;
 				}
 			}
-			System.out.println(i + " of " + FluxMain.width/50);
+			System.out.println(i + " of " + 99);
 		}
 		System.out.println("World " + name + " generated.");
 	}
@@ -109,18 +106,6 @@ public class World {
 	
 	public void update()
 	{
-		/*GL11.glBindTexture(GL11.GL_TEXTURE_2D, FluxMain.sky.getTextureID());
-		GL11.glBegin(GL11.GL_QUADS);
-		GL11.glTexCoord2f(0, 0);
-		GL11.glVertex2f(0, 0);
-		GL11.glTexCoord2f(1, 0);
-		GL11.glVertex2f(FluxMain.width, 0);
-		GL11.glTexCoord2f(1, 1);
-		GL11.glVertex2f(FluxMain.width, FluxMain.height);
-		GL11.glTexCoord2f(0, 1);
-		GL11.glVertex2f(0, FluxMain.height);
-		GL11.glEnd();*/
-		
 		entityManager.update();
 		particleManager.render();
 		particleManager.update();

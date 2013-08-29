@@ -36,7 +36,7 @@ public class TileGooBlaster extends Tile {
 	public TileGooBlaster(float x, float y, World world) {
 		super(x, y, 1,1, 1, "GooBlaster",EnumLightLevels.FIFTEEN);
 		this.world = world;
-		Particle p = new Particle(x+25,y-8, 100 ,3,false);
+		Particle p = new Particle(x+25,y-8, (short) 100 ,3,false);
 		p.velocity = -5;
 		this.emitter = new ParticleEmitter(p,world.particleManager);
 	}
