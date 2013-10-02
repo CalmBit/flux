@@ -21,21 +21,21 @@ package com.bluefeather.flux.src.main;
 
 import java.util.Random;
 
-import org.lwjgl.opengl.GL11;
+
 import org.lwjgl.util.vector.Vector2f;
+import org.newdawn.slick.Color;
 
 import com.bluefeather.flux.src.entities.EntityItemDrop;
 import com.bluefeather.flux.src.entities.EntityManager;
-import com.bluefeather.flux.src.entities.EntityMob;
+
 import com.bluefeather.flux.src.entities.EntityPlayer;
 import com.bluefeather.flux.src.items.ItemGem;
-import com.bluefeather.flux.src.particles.Particle;
+
 import com.bluefeather.flux.src.particles.ParticleManager;
 import com.bluefeather.flux.src.tile.Tile;
 import com.bluefeather.flux.src.tile.TileDirt;
-import com.bluefeather.flux.src.tile.TileGooBlaster;
 import com.bluefeather.flux.src.tile.TileGrass;
-import com.bluefeather.flux.src.utils.EnumColor;
+
 import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 public class World {
@@ -62,8 +62,8 @@ public class World {
 		worldGen();
 		entityManager.registerEntity(new EntityPlayer(this, 50, 50, "CalmBit", FluxMain.enttex.getTextureID()));
 		//entityManager.registerEntity(new EntityMob("Mob",this, 1,1,100,2,FluxMain.enttex2.getTextureID()));
-		entityManager.registerEntity(new EntityItemDrop(this,170,170,new ItemGem(EnumColor.WHITE)));
-		entityManager.registerEntity(new EntityItemDrop(this,220,220,new ItemGem(EnumColor.WHITE)));
+		entityManager.registerEntity(new EntityItemDrop(this,170,170,new ItemGem(Color.red)));
+		entityManager.registerEntity(new EntityItemDrop(this,220,220,new ItemGem(Color.red)));
 	}
 	
 	public void worldGen()

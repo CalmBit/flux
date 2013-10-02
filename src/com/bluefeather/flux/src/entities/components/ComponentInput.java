@@ -26,10 +26,9 @@ import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageAscending;
 import com.bluefeather.flux.src.entities.components.message.MessageChangeXVelocity;
 import com.bluefeather.flux.src.entities.components.message.MessageHealthChange;
-import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
+//import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
-import com.bluefeather.flux.src.entities.components.message.MessageReadInventorySlot;
-import com.bluefeather.flux.src.items.ItemGem;
+//import com.bluefeather.flux.src.items.ItemGem;
 import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.particles.Particle;
 
@@ -113,8 +112,8 @@ public class ComponentInput extends Component {
 		}
 		if(message.name == "ItemPacket")
 		{
-			MessageItemPacket packet = (MessageItemPacket) message;
-			ItemGem gem = (ItemGem)packet.itemReturned.item;
+			/*MessageItemPacket packet = (MessageItemPacket) message;
+			ItemGem gem = (ItemGem)packet.itemReturned.item;*/
 		}
 
 	}

@@ -22,6 +22,7 @@ public class ParticleEmitter {
 
 	private Particle template;
 	protected ParticleManager manager;
+	//possibly create an emmision rate (highest is 1 per frame, possibly determining 1/x given x)
 	public ParticleEmitter(Particle template, ParticleManager manager)
 	{
 		this.template = template;

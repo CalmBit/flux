@@ -21,10 +21,8 @@ package com.bluefeather.flux.src.entities.components;
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
 import com.bluefeather.flux.src.entities.components.message.MessageReadInventorySlot;
-import com.bluefeather.flux.src.items.Item;
-import com.bluefeather.flux.src.items.ItemGem;
 import com.bluefeather.flux.src.items.ItemStack;
-import com.bluefeather.flux.src.utils.EnumColor;
+
 
 public class ComponentInventory extends Component {
 
@@ -32,7 +30,7 @@ public class ComponentInventory extends Component {
 	public ItemStack[] inv;
 	public ComponentInventory(ComponentManager holder, int slots) {
 		super(holder, "Inventory");
-		this.slots = slots;
+		ComponentInventory.slots = slots;
 		inv = new ItemStack[slots];
 		
 	}
@@ -56,9 +54,7 @@ public class ComponentInventory extends Component {
 					if(inv[a].item.registeredName == i.itemReturned.item.registeredName && inv[a].item.maxStackSize > inv[a].quanity)
 					{
 						inv[a].quanity++;
-						System.out.println("Another " + inv[a].item.registeredName + " was added to slot " + a + ".");
-						System.out.println("That makes " + inv[a].quanity + ".");
-						System.out.println(inv[a].item.maxStackSize);
+						System.out.println("Another " + inv[a].item.registeredName + " was added to slot " + a + ", making " + inv[a].quanity);
 						break;
 					}
 				}

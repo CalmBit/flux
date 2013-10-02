@@ -25,7 +25,6 @@ import com.bluefeather.flux.src.entities.Entity;
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageDeath;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
-import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentManager {
 	

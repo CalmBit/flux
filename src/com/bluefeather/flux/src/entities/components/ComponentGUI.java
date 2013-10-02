@@ -19,7 +19,6 @@ package com.bluefeather.flux.src.entities.components;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.opengl.Texture;
 
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageItemPacket;
@@ -34,7 +33,6 @@ public class ComponentGUI extends Component {
 	private int doffset = 10;
 	public ComponentGUI(ComponentManager holder, int t) {
 		super(holder, "GUI");
-		// TODO Auto-generated constructor stub
 		inv = new Item[slots];
 		this.tid = t;
 	}

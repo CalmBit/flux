@@ -28,35 +28,36 @@ import org.lwjgl.opengl.GL11;
 
 
 
+import org.lwjgl.util.vector.Vector3f;
+import org.newdawn.slick.Color;
+
 import com.bluefeather.flux.src.entities.components.message.Message;
 import com.bluefeather.flux.src.entities.components.message.MessageDeath;
 import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.entities.components.message.MessageRequestPosition;
 import com.bluefeather.flux.src.main.FluxMain;
-import com.bluefeather.flux.src.main.World;
 import com.bluefeather.flux.src.particles.Particle;
 
 public class ComponentRender extends Component {
 
 	float x,y,sx,sy;
-	float r,g,b;
 	int texID;
-	public ComponentRender(ComponentManager holder, float i_x, float i_y,float sx,float sy, float r, float g, float b, int texID) {
+	Vector3f color;
+	public ComponentRender(ComponentManager holder, float i_x, float i_y,float sx,float sy, Vector3f color, int texID) {
 		super(holder, "Render");
 		this.x = i_x;
 		this.y = i_y;
 		this.sx = sx;
 		this.sy = sy;
-		this.r = r;
-		this.g = g;
-		this.b = b;
+		this.color = color;
 		this.texID = texID;
+		
 	}
 	
 	public void update()
 	{
 		fireMessage(new MessageRequestPosition(this.name,"Position"));
-		GL11.glColor3f(r, g, b);
+		new Color((float)color.x, (float)color.y, (float)color.z).bind();
 		glBindTexture(GL_TEXTURE_2D, texID);
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0,0);

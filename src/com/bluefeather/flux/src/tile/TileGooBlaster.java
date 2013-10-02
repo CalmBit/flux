@@ -21,7 +21,7 @@ package com.bluefeather.flux.src.tile;
 
 
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.Color;
+
 
 import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.main.World;

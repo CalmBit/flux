@@ -25,7 +25,7 @@ public class EntityItemDrop extends Entity {
 
 	public Item item;
 	public EntityItemDrop(World world, float x, float y, Item item) {
-		super(item.registeredName, world, x, y, item.texId);
+		super(item.registeredName, world, x, y, item.texId, item.color);
 		weight = 1;
 		this.item = item;
 	}

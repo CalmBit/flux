@@ -2,7 +2,7 @@ package com.bluefeather.flux.src.main;
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
- * 
+ *
  *  This file is part of The Flüx Engine.
  *
  *  The Flüx Engine is free software: you can redistribute it and/or modify

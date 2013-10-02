@@ -136,12 +136,12 @@ public class ComponentPosition extends Component {
 		
 		for(Entity ent : holder.process.world.entityManager.entities)
 		{
-			boolean collision = false;
+			//boolean collision = false;
 			if(ent == this.holder.process) continue;
 			if((this.x < ent.x + 50 && this.x + 50 > ent.x && (this.y + 50 >= ent.y && this.y <= ent.y + 50)))
 			{
 				//System.out.println(holder.process.name + " has collided with " + ent.name);
-				collision = true;
+				//collision = true;
 				
 				if(this.holder.process.name == "Player")
 				{

@@ -19,10 +19,7 @@ package com.bluefeather.flux.src.particles;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import java.util.ArrayList;
-
 import org.lwjgl.opengl.GL11;
-
-import com.bluefeather.flux.src.entities.components.message.MessagePositionChange;
 import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.main.World;
 import com.bluefeather.flux.src.particles.Particle;

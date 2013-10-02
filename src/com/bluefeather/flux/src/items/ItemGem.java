@@ -18,17 +18,14 @@ package com.bluefeather.flux.src.items;
  *  You should have received a copy of the GNU General Public License
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.lwjgl.util.vector.Vector3f;
+
+import org.newdawn.slick.Color;
 
 import com.bluefeather.flux.src.main.FluxMain;
-import com.bluefeather.flux.src.utils.EnumColor;
 
 public class ItemGem extends Item {
-
-	public EnumColor color;
-	public ItemGem(EnumColor color) {
-		super("Gem");
-		this.color = color;
+	public ItemGem(Color color) {
+		super("Gem", color);
 		texId = FluxMain.item_gem.getTextureID();
 	}
 

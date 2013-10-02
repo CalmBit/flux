@@ -20,15 +20,16 @@ package com.bluefeather.flux.src.entities;
  */
 
 
+import org.lwjgl.util.vector.Vector3f;
+import org.newdawn.slick.Color;
+
 import com.bluefeather.flux.src.entities.components.Component;
-import com.bluefeather.flux.src.entities.components.ComponentEntValues;
 
 
 import com.bluefeather.flux.src.entities.components.ComponentManager;
 import com.bluefeather.flux.src.entities.components.ComponentPosition;
 import com.bluefeather.flux.src.entities.components.ComponentRender;
 import com.bluefeather.flux.src.main.World;
-import com.bluefeather.flux.src.particles.Particle;
 
 
 public class Entity {
@@ -40,15 +41,17 @@ public class Entity {
 	//Copy of the position to be accessible by components and other things.
 	public float x,y;
 	public int weight;
-	public Entity(String name, World world, float x, float y, int texID)
+	public Color color;
+	public Entity(String name, World world, float x, float y, int texID, Color color)
 	{
 		boolean hI = false;
 		this.texID = texID;
 		this.name = name;
 		this.world = world;
+		this.color = color;
 		if(name == "Player") hI = true;
 		componentManager.addComponent(new ComponentPosition(componentManager, x, y,true, hI));
-		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, 1, 1, 1, this.texID));
+		componentManager.addComponent(new ComponentRender(componentManager, x, y, 50, 50, new Vector3f(x,y,1), this.texID));
 		this.x = x;
 		this.y = y;
 		

@@ -20,7 +20,6 @@ package com.bluefeather.flux.src.particles;
  */
 import java.util.Random;
 
-import org.newdawn.slick.opengl.Texture;
 
 public class Particle {
 	
@@ -43,7 +42,6 @@ public class Particle {
 		this.lifetime = time;
 		this.xvs = xvs;
 		this.floatp = floatp;
-		this.tex = tex;
 		if(rand.nextBoolean()) {
 		this.xvelocity = rand.nextFloat()*xvs;
 		}

@@ -19,8 +19,6 @@ package com.bluefeather.flux.src.tile;
  *  along with The Flüx Engine.  If not, see <http://www.gnu.org/licenses/>.
  */
 import org.lwjgl.opengl.GL11;
-
-import com.bluefeather.flux.src.main.FluxMain;
 import com.bluefeather.flux.src.utils.EnumLightLevels;
 
 public abstract class Tile {

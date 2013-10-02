@@ -1,4 +1,7 @@
 package com.bluefeather.flux.src.items;
+
+import org.newdawn.slick.Color;
+
 /*
  * Copyright © 2013 BlueFeather Solutions LLC
  * All Rights Reserved.
@@ -23,13 +26,18 @@ public abstract class Item {
 	public String registeredName;
 	public int texId;
 	public int maxStackSize;
-	public Item(String name, int maxStackSize) {
+	public Color color;
+	public Item(String name, int maxStackSize, Color color) {
 		this.registeredName = name;
 		this.maxStackSize = maxStackSize;
 	}
+	public Item(String name, Color color)
+	{
+		this(name,64, color);
+	}
 	public Item(String name)
 	{
-		this(name,64);
+		this(name,64, Color.white);
 	}
 	
 	public abstract Item getInstance();
